@@ -1,0 +1,79 @@
+<!-- Include Tailwind via CDN if your Drupal theme doesn't have it -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    /* Custom Seal Styles optimized for Drupal Full HTML */
+    .gov-seal-drupal {
+        width: 170px;
+        height: 170px;
+        background: #233423;
+        border: 7px solid #c9a75d;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #c9a75d;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        position: relative;
+        margin: 0 auto 2.5rem;
+    }
+    .gov-seal-drupal::after {
+        content: '';
+        position: absolute;
+        inset: -12px;
+        border: 1.5px dashed #c9a75d;
+        border-radius: 50%;
+        opacity: 0.3;
+    }
+    .seal-text-main {
+        font-size: 1.875rem;
+        font-weight: 900;
+        letter-spacing: 0.05em;
+        line-height: 1;
+    }
+</style>
+
+<section class="py-24 bg-white border-b border-slate-100" style="font-family: 'Outfit', sans-serif;">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-[#15803d] mb-16">Recognition by Government Authorities</h2>
+        
+        <div class="grid md:grid-cols-2 gap-16 justify-items-center">
+            
+            <!-- DIPP Seal Card -->
+            <div class="flex flex-col items-center max-w-sm group">
+                <div class="gov-seal-drupal transition-transform hover:scale-105">
+                    <!-- Cube/Box Icon for DIPP as per screenshot -->
+                    <svg class="w-12 h-12 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 16.09v-4.692c0-.53-.273-1.018-.724-1.298l-7.5-4.665a1.53 1.53 0 0 0-1.552 0l-7.5 4.665c-.451.28-.724.768-.724 1.298v4.692c0 .53.273 1.018.724 1.298l7.5 4.665a1.53 1.53 0 0 0 1.552 0l7.5-4.665c.451-.28.724-.768.724-1.298Z" />
+                        <path d="M3.27 10.15 12 15.58l8.73-5.43" />
+                        <path d="M12 21.5V15.5" />
+                    </svg>
+                    <span class="seal-text-main">DIPP</span>
+                    <span class="text-[10px] font-bold mt-2 uppercase tracking-tight">Govt. of India</span>
+                </div>
+                <h3 class="font-bold text-xl text-[#0c2d36] mb-3">Officially Recognized as a Startup by DIPP</h3>
+                <p class="text-[14px] text-slate-500 leading-relaxed px-4">
+                    Validated as an innovative enterprise of the innovation and digital economy recognized by the Ministry of Commerce and Industry.
+                </p>
+            </div>
+
+            <!-- Startup India Seal Card (FIXED & FULLY BUILT) -->
+            <div class="flex flex-col items-center max-w-sm group">
+                <div class="gov-seal-drupal transition-transform hover:scale-105">
+                    <!-- Star Icon for Startup India as per screenshot -->
+                    <svg class="w-12 h-12 mb-1" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <span class="text-lg font-black tracking-[0.1em] uppercase leading-none mt-1">startupindia</span>
+                </div>
+                <!-- Fixed: Added missing title and description below -->
+                <h3 class="font-bold text-xl text-[#0c2d36] mb-3">Accredited Under Startup India Initiative</h3>
+                <p class="text-[14px] text-slate-500 leading-relaxed px-4">
+                    Eligible for various benefits as per the flagship initiative of the Government of India, intended to build a strong eco-system for startups.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>

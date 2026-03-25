@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyTax | Professional Income Tax Filing India</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        .bg-mint-soft { background-color: #f4faf6; }
+        .text-navy-deep { color: #0c2d36; }
+        .bg-navy-deep { background-color: #0c2d36; }
+        .bg-dark-emerald { background-color: #0d3b44; }
+        
+        /* Specific Gov Seal Design from your image */
+        .gov-seal {
+            width: 170px;
+            height: 170px;
+            background: #233423;
+            border: 7px solid #c9a75d;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #c9a75d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .gov-seal::after {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border: 1.5px dashed #c9a75d;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        
+        .step-line {
+            height: 1px;
+            background: #e5e7eb;
+            flex-grow: 1;
+            margin: 0 1rem;
+            position: relative;
+        }
+        .step-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border-top: 1px solid #d1d5db;
+            border-right: 1px solid #d1d5db;
+            transform: rotate(45deg);
+        }
+
+        .service-card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 bg-green-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <span class="text-xl font-extrabold text-green-700 tracking-tighter">EASYTAX</span>
+                </div>
+                <div class="hidden md:flex space-x-10 font-semibold text-slate-600 text-[13px] uppercase tracking-wider">
+                    <a href="#" class="hover:text-green-600 transition-colors">IT Return</a>
+                    <a href="#" class="hover:text-green-600 transition-colors">TDS</a>
+                    <a href="#" class="hover:text-green-600 transition-colors">GST</a>
+                    <a href="#" class="hover:text-green-600 transition-colors">Business</a>
+                </div>
+                <button class="bg-green-600 text-white px-7 py-2.5 rounded-md font-bold text-sm hover:bg-green-700 shadow-md shadow-green-100 transition-all">
+                    Login / Sign up
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-mint-soft pt-24 pb-16">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <span class="text-green-600 font-bold text-[11px] uppercase tracking-[0.2em] mb-4 block">Welcome! Thrive 850</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-navy-deep mb-4 leading-tight">
+                Income Tax Filing in <span class="text-green-600">India</span>
+            </h1>
+            <p class="text-slate-500 font-medium text-sm md:text-base max-w-xl mx-auto mb-14 leading-relaxed">
+                Experience seamless, end-to-end digital tax services. Trusted by 10,000+ happy taxpayers across the nation.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="bg-white p-7 rounded-2xl shadow-sm border border-emerald-50 flex items-start gap-5 text-left service-card-hover cursor-pointer">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-navy-deep text-lg">For Individual</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-normal">File your personal ITR with expert guidance in minutes.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-7 rounded-2xl shadow-sm border border-emerald-50 flex items-start gap-5 text-left service-card-hover cursor-pointer">
+                    <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center text-green-600 shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-navy-deep text-lg">For Business</h3>
+                        <p class="text-xs text-slate-400 mt-1 leading-normal">Comprehensive GST, TDS and audit services for your company.</p>
+                        <span class="inline-block mt-2 bg-red-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest animate-pulse">Live</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MERGED AUTHORITY: Recognition Section -->
+    <section class="py-20 bg-white border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-green-700 mb-16">Recognition by Government Authorities</h2>
+            
+            <div class="grid md:grid-cols-2 gap-16 justify-items-center">
+                <!-- DIPP Seal -->
+                <div class="flex flex-col items-center max-w-sm group">
+                    <div class="gov-seal mb-10 transition-transform group-hover:scale-105">
+                        <svg class="w-12 h-12 mb-2" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.18L18.82 7.5 12 11.32 5.18 7.5 12 4.18zM5 16.09V9.5l7 3.82 7-3.82v6.59l-7 3.82-7-3.82z"/>
+                        </svg>
+                        <span class="text-3xl font-black tracking-widest leading-none">DIPP</span>
+                        <span class="text-[10px] font-bold mt-2 uppercase">Govt. of India</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-navy-deep mb-3">Officially Recognized as a Startup by DIPP</h3>
+                    <p class="text-[13px] text-slate-500 leading-relaxed px-4">
+                        Validated as an innovative enterprise of the innovation and digital economy recognized by the Ministry of Commerce and Industry.
+                    </p>
+                </div>
+
+                <!-- Startup India Seal -->
+                <div class="flex flex-col items-center max-w-sm group">
+                    <div class="gov-seal mb-10 transition-transform group-hover:scale-105">
+                        <svg class="w-12 h-12 mb-2" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        <span class="text-lg font-black tracking-[0.1em] uppercase leading-none">startupindia</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-navy-deep mb-3">Accredited Under Startup India Initiative</h3>
+                    <p class="text-[13px] text-slate-500 leading-relaxed px-4">
+                        Eligible for various benefits as per the flagship initiative of the Government of India, intended to build a strong eco-system for startups.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="py-24 max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="grid md:grid-cols-3 gap-16 items-center">
+            <div class="md:col-span-1">
+                <span class="text-green-600 text-xs font-extrabold uppercase tracking-widest">About EasyTax</span>
+                <h2 class="text-3xl font-bold text-navy-deep mt-4 mb-7 leading-tight">Easy Tax Solutions Designed With You In Mind</h2>
+                <p class="text-slate-500 text-sm leading-relaxed mb-10">
+                    We simplify the complex for your peace of mind. Our solutions are built on precision, trust, and advanced digital integration.
+                </p>
+                <a href="#" class="inline-flex items-center gap-2 text-green-600 font-bold text-sm group">
+                    Learn more about us 
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+            <div class="md:col-span-2 grid sm:grid-cols-2 gap-8">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-50 shadow-xl shadow-slate-100/40 service-card-hover">
+                    <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-8 text-green-600">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h4 class="font-bold text-navy-deep text-xl mb-3">Income Tax</h4>
+                    <p class="text-sm text-slate-400 mb-8 leading-relaxed">Fast, accurate and professional ITR filing for salaried and freelancers.</p>
+                    <button class="bg-green-600 text-white px-6 py-2.5 rounded-lg text-xs font-bold hover:bg-green-700 transition-colors">ITR Filing</button>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-50 shadow-xl shadow-slate-100/40 service-card-hover">
+                    <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-8 text-green-600">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <h4 class="font-bold text-navy-deep text-xl mb-3">More Services</h4>
+                    <p class="text-sm text-slate-400 mb-8 leading-relaxed">Explore GST registration, TDS filings, and corporate compliance.</p>
+                    <button class="bg-green-600 text-white px-6 py-2.5 rounded-lg text-xs font-bold hover:bg-green-700 transition-colors">View All</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Process Section -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-20 gap-6">
+                <h2 class="text-3xl font-bold text-navy-deep">5 Process Steps To Review Your Income</h2>
+                <button class="bg-green-600 text-white px-8 py-3 rounded-full text-xs font-bold hover:shadow-lg transition-all shadow-green-200">Get Started</button>
+            </div>
+            
+            <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4">
+                <div class="flex flex-col items-center gap-4">
+                    <div class="w-16 h-16 bg-white border border-green-200 rounded-full flex items-center justify-center text-green-600 font-extrabold shadow-sm">1</div>
+                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Register</span>
+                </div>
+                <div class="hidden md:block step-line"></div>
+                <div class="flex flex-col items-center gap-4">
+                    <div class="w-16 h-16 bg-white border border-green-200 rounded-full flex items-center justify-center text-green-600 font-extrabold shadow-sm">2</div>
+                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Select Plan</span>
+                </div>
+                <div class="hidden md:block step-line"></div>
+                <div class="flex flex-col items-center gap-4">
+                    <div class="w-16 h-16 bg-white border border-green-200 rounded-full flex items-center justify-center text-green-600 font-extrabold shadow-sm">3</div>
+                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Upload Docs</span>
+                </div>
+                <div class="hidden md:block step-line"></div>
+                <div class="flex flex-col items-center gap-4">
+                    <div class="w-16 h-16 bg-white border border-green-200 rounded-full flex items-center justify-center text-green-600 font-extrabold shadow-sm">4</div>
+                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Review</span>
+                </div>
+                <div class="hidden md:block step-line"></div>
+                <div class="flex flex-col items-center gap-4">
+                    <div class="w-16 h-16 bg-white border border-green-200 rounded-full flex items-center justify-center text-green-600 font-extrabold shadow-sm">5</div>
+                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Finished</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Grid Section -->
+    <section class="py-24 max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="text-center mb-16">
+            <span class="text-green-600 font-bold text-xs uppercase tracking-[0.3em]">Our Expertise</span>
+            <h2 class="text-4xl font-extrabold text-navy-deep mt-4">Income Tax Services We Offer</h2>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-5">
+            <!-- Left Dark Block (Exact as live site) -->
+            <div class="md:col-span-1 md:row-span-2 bg-dark-emerald text-white p-10 rounded-[2rem] flex flex-col justify-between shadow-2xl">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 leading-tight">For Planning Services</h3>
+                    <p class="text-sm opacity-70 mb-10 leading-relaxed">Tax structuring and strategic advice to minimize your liabilities across the financial year.</p>
+                </div>
+                <button class="bg-white text-dark-emerald px-6 py-3 rounded-xl text-xs font-extrabold hover:bg-slate-100 transition-colors w-max">Get started now</button>
+            </div>
+            
+            <!-- Cards (8 Cards total in live site grid) -->
+            <div class="bg-white p-7 rounded-[1.5rem] border border-slate-100 shadow-sm service-card-hover group">
+                <div class="text-green-600 mb-6 group-hover:scale-110 transition-transform"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div>
+                <h4 class="font-bold text-navy-deep text-sm mb-2">Individual ITR</h4>
+                <p class="text-[10px] text-slate-400">Personal tax filing for salary and other sources.</p>
+                <button class="text-green-600 text-[11px] font-bold mt-5 flex items-center gap-1">Learn More <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+            </div>
+            <div class="bg-white p-7 rounded-[1.5rem] border border-slate-100 shadow-sm service-card-hover group">
+                <div class="text-green-600 mb-6 group-hover:scale-110 transition-transform"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg></div>
+                <h4 class="font-bold text-navy-deep text-sm mb-2">GST Filing</h4>
+                <p class="text-[10px] text-slate-400">Hassle-free GST registration and periodic filing.</p>
+                <button class="text-green-600 text-[11px] font-bold mt-5 flex items-center gap-1">Learn More <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+            </div>
+            <div class="bg-white p-7 rounded-[1.5rem] border border-slate-100 shadow-sm service-card-hover group">
+                <div class="text-green-600 mb-6 group-hover:scale-110 transition-transform"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <h4 class="font-bold text-navy-deep text-sm mb-2">TDS Management</h4>
+                <p class="text-[10px] text-slate-400">Quarterly TDS returns and certificate assistance.</p>
+                <button class="text-green-600 text-[11px] font-bold mt-5 flex items-center gap-1">Learn More <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+            </div>
+
+            <!-- Bottom Row cards -->
+            <div class="bg-white p-7 rounded-[1.5rem] border border-slate-100 shadow-sm service-card-hover group">
+                <div class="text-green-600 mb-6 group-hover:scale-110 transition-transform"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg></div>
+                <h4 class="font-bold text-navy-deep text-sm mb-2">Company Reg</h4>
+                <p class="text-[10px] text-slate-400">Register your LLP, Pvt Ltd or One Person Company.</p>
+                <button class="text-green-600 text-[11px] font-bold mt-5 flex items-center gap-1">Learn More <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+            </div>
+            <div class="bg-white p-7 rounded-[1.5rem] border border-slate-100 shadow-sm service-card-hover group">
+                <div class="text-green-600 mb-6 group-hover:scale-110 transition-transform"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                <h4 class="font-bold text-navy-deep text-sm mb-2">Trademark</h4>
+                <p class="text-[10px] text-slate-400">Secure your brand's unique identity legally.</p>
+                <button class="text-green-600 text-[11px] font-bold mt-5 flex items-center gap-1">Learn More <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+            </div>
+            <div class="bg-white p-7 rounded-[1.5rem] border border-slate-100 shadow-sm service-card-hover group">
+                <div class="text-green-600 mb-6 group-hover:scale-110 transition-transform"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"></path></svg></div>
+                <h4 class="font-bold text-navy-deep text-sm mb-2">Notary Service</h4>
+                <p class="text-[10px] text-slate-400">Digital notary and document verification.</p>
+                <button class="text-green-600 text-[11px] font-bold mt-5 flex items-center gap-1">Learn More <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Services Section (Exactly as live site screenshot) -->
+    <section class="py-24 max-w-7xl mx-auto px-6 lg:px-10 border-t border-slate-100">
+        <div class="text-center mb-20">
+            <h2 class="text-3xl font-extrabold text-navy-deep">Looking For Expert Services?</h2>
+            <p class="text-slate-400 text-[13px] mt-4 max-w-lg mx-auto leading-relaxed">Dedicated professional support for complex tax matters and corporate regulatory filings.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <div class="bg-slate-50 p-12 rounded-[3rem] transition-all hover:bg-white hover:shadow-2xl hover:shadow-slate-100">
+                <h3 class="font-bold text-2xl text-navy-deep mb-8 flex items-center gap-4">
+                    <span class="w-1.5 h-8 bg-orange-400 rounded-full"></span> For You
+                </h3>
+                <ul class="space-y-6">
+                    <li class="flex items-center gap-4 text-sm font-medium text-slate-600">
+                        <svg class="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        Professional ITR Filing
+                    </li>
+                    <li class="flex items-center gap-4 text-sm font-medium text-slate-600">
+                        <svg class="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        Wealth & Portfolio Management
+                    </li>
+                    <li class="flex items-center gap-4 text-sm font-medium text-slate-600">
+                        <svg class="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        Income Tax Notices & Appeals
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-slate-50 p-12 rounded-[3rem] transition-all hover:bg-white hover:shadow-2xl hover:shadow-slate-100">
+                <h3 class="font-bold text-2xl text-navy-deep mb-8 flex items-center gap-4">
+                    <span class="w-1.5 h-8 bg-blue-600 rounded-full"></span> For Business
+                </h3>
+                <ul class="space-y-6">
+                    <li class="flex items-center gap-4 text-sm font-medium text-slate-600">
+                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        Business Taxation & Auditing
+                    </li>
+                    <li class="flex items-center gap-4 text-sm font-medium text-slate-600">
+                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        FDI & International Taxation
+                    </li>
+                    <li class="flex items-center gap-4 text-sm font-medium text-slate-600">
+                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        Legal Compliance & ROC Filings
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 text-center">
+            <span class="text-green-600 font-extrabold text-[11px] uppercase tracking-widest block mb-4">Our Clients</span>
+            <h2 class="text-3xl font-bold text-navy-deep mb-4">We Appreciate Feedback From Our Customers</h2>
+            <div class="flex items-center justify-center gap-2 mb-16 text-orange-400">
+                <span class="text-lg">★★★★★</span>
+                <span class="text-navy-deep font-bold text-xs ml-2">4.9 / 5.0 Rating on Google</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div class="bg-slate-50 p-10 rounded-[2rem] text-left border border-slate-100 shadow-sm transition-all hover:bg-white hover:shadow-lg">
+                    <p class="text-slate-500 italic text-sm leading-relaxed mb-10">"The easiest tax filing experience I've ever had. No paperwork, just a simple digital flow and professional support at every turn."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700 font-extrabold">JS</div>
+                        <div>
+                            <h4 class="font-bold text-navy-deep text-sm">John Smith</h4>
+                            <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Client from Bangalore</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-10 rounded-[2rem] text-left border border-slate-100 shadow-sm transition-all hover:bg-white hover:shadow-lg">
+                    <p class="text-slate-500 italic text-sm leading-relaxed mb-10">"Finally, a digital tax solution that actually works for startups. Their corporate compliance team is world-class and very responsive."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 font-extrabold">RK</div>
+                        <div>
+                            <h4 class="font-bold text-navy-deep text-sm">Ravi Kumar</h4>
+                            <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Startup Founder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Call Banner -->
+    <section class="bg-mint-soft py-14">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="bg-navy-deep rounded-[3rem] p-12 md:p-16 flex flex-col md:flex-row justify-between items-center gap-10 overflow-hidden relative shadow-2xl">
+                <!-- Abstract background elements -->
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-green-500 opacity-10 rounded-full blur-3xl"></div>
+                <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-500 opacity-10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10 text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">Free Consultation Call?</h2>
+                    <p class="text-slate-400 text-sm max-w-sm">Speak with our expert CAs to find the right tax plan for you.</p>
+                </div>
+                <div class="relative z-10 flex flex-col sm:flex-row items-center gap-6">
+                    <button class="bg-green-600 text-white px-10 py-4 rounded-2xl font-extrabold text-sm hover:bg-green-700 transition-all shadow-xl shadow-green-900/40">Book Now</button>
+                    <a href="#" class="text-white font-bold text-sm underline decoration-green-600 underline-offset-8 decoration-2">View Pricing Plans</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Trust White-on-Dark Section (Exactly like live footer top) -->
+    <section class="bg-navy-deep pt-24 pb-12 px-6">
+        <div class="max-w-5xl mx-auto bg-white rounded-[3rem] p-10 md:p-16 grid md:grid-cols-3 gap-12 text-center md:text-left shadow-2xl">
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-8"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
+                <h4 class="font-bold text-navy-deep text-lg mb-3 leading-tight">Secure & Certified</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">ISO 27001 certified platform ensuring your financial data is protected with 128-bit bank-grade encryption.</p>
+            </div>
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-8"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <h4 class="font-bold text-navy-deep text-lg mb-3 leading-tight">Expert CA Support</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Access dedicated support from experienced Chartered Accountants for even the most complex tax notices.</p>
+            </div>
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-8"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                <h4 class="font-bold text-navy-deep text-lg mb-3 leading-tight">Max Saving Engine</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Our proprietary algorithms analyze every possible deduction to ensure you get the maximum legal refund.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-deep text-slate-400 pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-16 mb-24">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-8">
+                        <div class="w-9 h-9 bg-green-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <span class="text-xl font-extrabold text-white tracking-tighter uppercase">EASYTAX</span>
+                    </div>
+                    <p class="text-sm leading-relaxed max-w-xs mb-10">India's leading digital platform for income tax filing and business compliance. 100% cloud-based, officially recognized by Government of India.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-green-600 transition-all text-white"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-green-600 transition-all text-white"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xs uppercase tracking-widest text-white mb-8">Popular Services</h4>
+                    <ul class="text-sm space-y-4 font-medium">
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">Income Tax Return</li>
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">GST Filing</li>
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">TDS Management</li>
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">Tax Audits</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xs uppercase tracking-widest text-white mb-8">Quick Links</h4>
+                    <ul class="text-sm space-y-4 font-medium">
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">About Us</li>
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">Our Team</li>
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">Contact</li>
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">Careers</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xs uppercase tracking-widest text-white mb-8">Legal</h4>
+                    <ul class="text-sm space-y-4 font-medium">
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">Privacy Policy</li>
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">Terms of Service</li>
+                        <li class="hover:text-green-600 transition-colors cursor-pointer">Refund Policy</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[10px] uppercase font-bold tracking-[0.2em] text-white/30">© 2026 EasyTax Global IT Solutions. Recognized by Govt. of India.</p>
+                <div class="flex items-center gap-8 opacity-40">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/200px-Flag_of_India.svg.png" alt="India" class="h-4">
+                    <span class="text-[10px] text-white font-bold tracking-widest uppercase">Made for Indian Taxpayers</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

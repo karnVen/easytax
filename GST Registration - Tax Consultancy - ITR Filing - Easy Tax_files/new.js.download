@@ -1,0 +1,15 @@
+(function ($, Drupal, drupalSettings) {
+  $(document).ready(function () {
+	$('.nav-title, .fa-angle-down').each(function() {
+	    $(this).on('click', function() {
+	        // Toggle the 'active' class on the parent <li> of the clicked element.
+	        $(this).parent('li').toggleClass('active');
+	    });
+	});
+	
+	$('.spb_close').click(function(){
+		$('body').toggleClass('hide-popup');
+	  });
+	
+  });
+})(jQuery, Drupal, drupalSettings);

@@ -1,0 +1,172 @@
+<!-- 
+    PREVIEW FILE: 6 Different Design Directions for Government Recognition 
+    All use Tailwind CSS for easy Drupal integration.
+-->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+    body { font-family: 'Outfit', sans-serif; background: #f8fafc; color: #0f172a; }
+    .font-syne { font-family: 'Syne', sans-serif; }
+    
+    /* Variation 3: Glassmorphism */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    /* Variation 4: Bento Borders */
+    .bento-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+    }
+    .bento-card:hover {
+        border-color: #22c55e;
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05);
+    }
+
+    /* Variation 5: Milestone Line */
+    .timeline-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: repeating-linear-gradient(to right, #cbd5e1 0, #cbd5e1 5px, transparent 5px, transparent 10px);
+        z-index: 0;
+    }
+</style>
+
+<div class="space-y-32 py-20 bg-slate-50">
+
+    <!-- VERSION 1: THE AUTHORITY RIBBON (Minimalist & Clean) -->
+    <section class="bg-[#f0f9f4] border-y border-green-100 py-6">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="flex items-center gap-4">
+                <span class="bg-green-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Official</span>
+                <h2 class="text-navy-900 font-bold text-lg">Govt. of India Recognized Startup</h2>
+            </div>
+            
+            <div class="flex items-center gap-12">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[#233423] rounded-full flex items-center justify-center text-[#c9a75d] border-2 border-[#c9a75d]">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/></svg>
+                    </div>
+                    <span class="font-bold text-slate-700 text-sm">DIPP Verified</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[#233423] rounded-full flex items-center justify-center text-[#c9a75d] border-2 border-[#c9a75d]">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <span class="font-bold text-slate-700 text-sm">Startup India Accredited</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- VERSION 4: THE BENTO TRUST GRID (Modern & Structured) -->
+    <!-- Popular for SaaS and Tech Startups -->
+    <section class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="font-syne text-3xl font-extrabold mb-4">Foundation of Trust</h2>
+            <p class="text-slate-500">Our credentials vetted by the Ministry of Commerce & Industry.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-full">
+            <div class="md:col-span-2 bento-card p-10 rounded-[2rem] flex flex-col justify-between">
+                <div>
+                    <span class="text-green-600 font-bold text-xs uppercase tracking-widest mb-4 block">Official Recognition</span>
+                    <h3 class="text-2xl font-bold mb-4">Authorized E-Filing Intermediary</h3>
+                    <p class="text-slate-500 max-w-md">EasyTax is recognized as an authorized startup under the flagship Startup India initiative of the Government of India.</p>
+                </div>
+                <div class="mt-8 flex gap-4">
+                    <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center text-[#c9a75d] border border-[#c9a75d]/30">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/></svg>
+                    </div>
+                    <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center text-white">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-card p-10 rounded-[2rem] bg-slate-900 text-white flex flex-col justify-center text-center">
+                <div class="text-4xl font-syne font-bold text-green-500 mb-2">DIPP</div>
+                <div class="text-[10px] uppercase font-bold tracking-[0.3em] text-slate-400 mb-6">Verified Startup</div>
+                <p class="text-sm text-slate-400">Validated for innovation and distinct technological advancements.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- VERSION 5: THE MILESTONE TIMELINE (Storytelling) -->
+    <!-- Best for showing growth/certification journey -->
+    <section class="max-w-4xl mx-auto px-6 relative">
+        <div class="text-center mb-20">
+            <h2 class="text-2xl font-bold text-slate-400 uppercase tracking-widest mb-4">Our Credentials</h2>
+            <div class="h-1 w-20 bg-green-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="relative">
+            <div class="hidden md:block timeline-line"></div>
+            <div class="grid md:grid-cols-2 gap-12 md:gap-32 relative z-10">
+                <!-- Milestone 1 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-white border-4 border-slate-100 rounded-full mx-auto mb-6 flex items-center justify-center text-green-600 shadow-xl relative">
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <svg class="w-10 h-10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/></svg>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">DIPP Recognition</h4>
+                    <p class="text-xs text-slate-500 uppercase font-bold tracking-widest mb-3">Ministry of Commerce</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">Officially recognized for excellence in financial technology innovation.</p>
+                </div>
+                <!-- Milestone 2 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-white border-4 border-slate-100 rounded-full mx-auto mb-6 flex items-center justify-center text-green-600 shadow-xl relative">
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <svg class="w-10 h-10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Startup India</h4>
+                    <p class="text-xs text-slate-500 uppercase font-bold tracking-widest mb-3">Flagship Initiative</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">Vetted and approved for contribution to the Digital India movement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- VERSION 6: THE FLOATING MINIMALIST (Clean & High-End) -->
+    <!-- Ideal for modern, apple-style websites -->
+    <section class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h2 class="font-syne text-4xl font-bold mb-6">Trusted by the <span class="text-green-600">Nation</span>.</h2>
+                    <p class="text-slate-500 mb-8">EasyTax is more than an app. We are an officially vetted entity authorized by the highest governing bodies in India.</p>
+                    <button class="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold text-sm">Verify Credentials</button>
+                </div>
+                <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 transition-all hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 group">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-slate-900 shadow-sm mb-6 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">DIPP Recognition</h4>
+                        <p class="text-sm text-slate-400">Validated as an innovative enterprise by the Dept. for Promotion of Industry and Internal Trade.</p>
+                    </div>
+                    <div class="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 transition-all hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 group">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-green-600 shadow-sm mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Startup India</h4>
+                        <p class="text-sm text-slate-400">Registered participant of the national initiative fostering innovation and growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
