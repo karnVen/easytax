@@ -3585,97 +3585,275 @@
 <!-- END OUTPUT from 'themes/techprosolutions/templates/block/block--techprosolutions-taxfiling.html.twig' -->
 
 <!-- ===== TRUST BADGES SECTION - Paste AFTER the tax-filing block ends =====#f0f4f0 -->
-<div class="trust-badges-section" style="background: #fefefe; padding: 40px 20px; text-align: center;">
-  <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 30px 50px;">
-
-    <!-- DPIIT Badge (Image) -->
-    <div style="display: flex; align-items: center; gap: 12px;">
-      <img src="dpiit.png" alt="DPIIT Startup India Recognized" style="height: 160px; width: auto; object-fit: contain;" />
-    </div>
-
-    <!-- Center Text  A Partner in<br>Compliance &amp; Growth -->
-
-
-
-
-    
-
-
-	<div class="hero-container">
-  <p class="sub-label">Government-Authorized Expertise</p>
-  <h1 class="main-title">
-    A Partner in<br>
-    Compliance & <span class="highlight">Growth</span>
-
-	
-  </h1>
-  <div style="margin-top: 24px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; font-size: 14px; color: #555; border-top: 1px solid #ffffff; padding-top: 18px; max-width: 700px; margin-left: auto; margin-right: auto;">
-    <span>www.startupindia.gov.in</span>
-    <span style="color: #bbb;">|</span>
-    <span>istat.rajasthan.gov.in</span>
-   
-  </div>
-
-</div>
-
-   
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet"/>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap');
-
-  .hero-container {
-    text-align: center;
+  .tb2-wrap {
+    background: #ffffff;
     font-family: 'Inter', sans-serif;
-    padding: 0px;
-    background-color: #ffffff; /* Light tint to match the image background */
+    padding: 0;
+    position: relative;
   }
 
-  .sub-label {
-    color: #6a9b6a;  /* The muted green from the top of your image */
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
+  /* ── TOP HEADLINE STRIP ── */
+  .tb2-header {
+    background: #f0f7f0;
+   
+    border-bottom: 1px solid #d8ead8;
+    padding: 36px 24px 32px;
+    text-align: center;
+    position: relative;
   }
 
-  .main-title {
-    color: #333333; /* Dark charcoal/grey from your image */
-    font-size: 3.5rem;
+  .tb2-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2e7d32;
+    margin-bottom: 14px;
+  }
+
+  .tb2-kicker span {
+    display: inline-block;
+    width: 32px;
+    height: 1.5px;
+    background: #2e7d32;
+    opacity: 0.4;
+  }
+
+  .tb2-headline {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 800;
-    line-height: 1.2;
+    color: #111;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
     margin: 0;
   }
 
-  .highlight {
-    color: #5ba35b; /* The vibrant "India" green from your image */
+  .tb2-headline em {
+    font-style: normal;
+    color: #2e7d32;
   }
 
-  /* Responsive adjustment for mobile */
+  .tb2-subline {
+    font-size: 13px;
+    color: #6a8a6a;
+    font-weight: 500;
+    margin-top: 10px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── BADGES ROW ── */
+  .tb2-badges {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0 0 0;
+  }
+
+  .tb2-badge-item {
+    flex: 1 1 220px;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 44px 32px 36px;
+    position: relative;
+    cursor: default;
+    transition: background 0.25s ease;
+  }
+
+  /* Vertical dividers between items */
+  .tb2-badge-item + .tb2-badge-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 20%; bottom: 20%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #d0e4d0, transparent);
+  }
+
+  .tb2-badge-item:hover {
+    background: #f7fbf7;
+  }
+
+  /* Green top accent on hover */
+  .tb2-badge-item::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%) scaleX(0);
+    width: 60%; height: 3px;
+    background: #2e7d32;
+    border-radius: 0 0 3px 3px;
+    transition: transform 0.3s ease;
+  }
+
+  .tb2-badge-item:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  /* Image wrapper — subtle circle bg */
+  .tb2-img-wrap {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #eef6ee;
+    border: 1.5px solid #c5ddc5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+
+  .tb2-badge-item:hover .tb2-img-wrap {
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 4px rgba(46,125,50,0.08);
+  }
+
+  .tb2-img-wrap img {
+    height: 68px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .tb2-badge-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: center;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .tb2-badge-sub {
+    font-size: 11px;
+    font-weight: 500;
+    color: #7a9a7a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  /* ── FOOTER BAR ── */
+  .tb2-footer {
+    border-top: 1px solid #d8ead8;
+    background: #f0f7f0;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 28px;
+    flex-wrap: wrap;
+  }
+
+  .tb2-footer-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a8a5a;
+    margin-right: 8px;
+  }
+
+  .tb2-footer a {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #2e7d32;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+
+  .tb2-footer a:hover { opacity: 1; text-decoration: underline; }
+
+  .tb2-footer-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: #b0ccb0;
+    display: inline-block;
+  }
+
+  /* ── FADE IN ── */
+  @keyframes tb2Up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .tb2-header  { animation: tb2Up 0.5s ease both; }
+  .tb2-badge-item:nth-child(1) { animation: tb2Up 0.45s 0.05s ease both; }
+  .tb2-badge-item:nth-child(2) { animation: tb2Up 0.45s 0.12s ease both; }
+  .tb2-badge-item:nth-child(3) { animation: tb2Up 0.45s 0.19s ease both; }
+  .tb2-footer { animation: tb2Up 0.45s 0.25s ease both; }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
-    .main-title {
-      font-size: 2.2rem;
-    }
+    .tb2-badge-item { padding: 32px 20px 28px; }
+    .tb2-badge-item + .tb2-badge-item::before { display: none; }
+    .tb2-img-wrap { width: 90px; height: 90px; }
+    .tb2-img-wrap img { height: 54px; }
   }
 </style>
 
-    <!-- iSTART Badge (Image) -->
-    <div>
-      <img src="istart.png" alt="iSTART Supported by Rajasthan" style="height: 160px; width: auto; object-fit: contain;" />
+<div class="tb2-wrap">
+
+  <!-- HEADER STRIP -->
+  <div class="tb2-header">
+    <div class="tb2-kicker">
+      <span></span>
+      Government Authorized
+      <span></span>
+    </div>
+    <h2 class="tb2-headline">Trusted for <em>Compliance</em> &amp; Growth</h2>
+    <p class="tb2-subline">Recognized by Government of India &amp; State of Rajasthan</p>
+  </div>
+
+  <!-- BADGE CARDS -->
+  <div class="tb2-badges">
+
+    <div class="tb2-badge-item">
+      <div class="tb2-img-wrap">
+        <img src="dpiit.png" alt="DPIIT Startup India" />
+      </div>
+      <div class="tb2-badge-name">Startup India<br>Recognized</div>
+      <div class="tb2-badge-sub">DPIIT · Govt. of India</div>
     </div>
 
-    <!-- ISO Badge (Image) -->
-    <div>
-      <img src="iso.png" alt="ISO 9001:2015 Certified Company" style="height: 160px; width: auto; object-fit: contain;" />
+    <div class="tb2-badge-item">
+      <div class="tb2-img-wrap">
+        <img src="istart.png" alt="iSTART Rajasthan" />
+      </div>
+      <div class="tb2-badge-name">iSTART<br>Supported</div>
+      <div class="tb2-badge-sub">Govt. of Rajasthan</div>
+    </div>
+
+    <div class="tb2-badge-item">
+      <div class="tb2-img-wrap">
+        <img src="iso.png" alt="ISO 9001:2015 Certified" />
+      </div>
+      <div class="tb2-badge-name">ISO 9001:2015<br>Certified</div>
+      <div class="tb2-badge-sub">Quality Management</div>
     </div>
 
   </div>
 
-  <!-- Bottom bar   #d4ddd4 -->
- 
-<!-- ===== END TRUST BADGES SECTION ===== -->
-
+  <!-- FOOTER BAR -->
+  <div class="tb2-footer">
+    <span class="tb2-footer-label">Verify at</span>
+    <a href="https://www.startupindia.gov.in" target="_blank">startupindia.gov.in</a>
+    <span class="tb2-footer-dot"></span>
+    <a href="https://istat.rajasthan.gov.in" target="_blank">istat.rajasthan.gov.in</a>
+  </div>
 
 </div>
+
 
 
 

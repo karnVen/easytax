@@ -1,0 +1,404 @@
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+
+<style>
+/* ══════════════════════════════════════
+   TRUST CREDENTIALS — PREMIUM SECTION
+══════════════════════════════════════ */
+.cr-root {
+  font-family: 'Inter', sans-serif;
+  background: #061206;
+  position: relative;
+  overflow: hidden;
+  padding: 90px 32px 80px;
+  isolation: isolate;
+}
+
+/* Security-paper diagonal line texture */
+.cr-root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 18px,
+    rgba(255,255,255,0.012) 18px,
+    rgba(255,255,255,0.012) 19px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Large ambient glow — left */
+.cr-root::after {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56,142,60,0.13) 0%, transparent 65%);
+  top: -200px; left: -200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cr-glow-right {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,168,75,0.07) 0%, transparent 65%);
+  bottom: -150px; right: -100px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── INNER ── */
+.cr-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ── EYEBROW ── */
+.cr-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.cr-eyebrow-line {
+  height: 1px;
+  width: 56px;
+  background: linear-gradient(90deg, transparent, rgba(200,168,75,0.6));
+}
+.cr-eyebrow-line.right {
+  background: linear-gradient(90deg, rgba(200,168,75,0.6), transparent);
+}
+.cr-eyebrow-text {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #c8a84b;
+  white-space: nowrap;
+}
+
+/* ── HEADLINE ── */
+.cr-headline {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.cr-headline h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 400;
+  color: #f0f4f0;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+  margin: 0 0 16px;
+}
+.cr-headline h2 em {
+  font-style: italic;
+  color: #6dbf6d;
+}
+.cr-headline p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.32);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── BADGES GRID ── */
+.cr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr 1px 1fr;
+  gap: 0;
+  margin-bottom: 64px;
+}
+
+/* Vertical separator */
+.cr-sep {
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(200,168,75,0.2) 30%,
+    rgba(200,168,75,0.2) 70%,
+    transparent 100%
+  );
+  margin: 0 8px;
+  align-self: stretch;
+}
+
+/* ── SINGLE BADGE ── */
+.cr-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 28px 28px;
+  position: relative;
+  cursor: default;
+  group: true;
+}
+
+/* Top accent bar — gold, expands on hover */
+.cr-badge-accent {
+  width: 32px;
+  height: 2px;
+  background: #c8a84b;
+  border-radius: 2px;
+  margin-bottom: 32px;
+  transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.cr-badge:hover .cr-badge-accent { width: 64px; }
+
+/* Hexagon frame */
+.cr-hex-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 28px;
+}
+
+/* Hex shape via clip-path */
+.cr-hex-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #0d2e0d, #0a220a);
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  transition: background 0.3s;
+}
+.cr-badge:hover .cr-hex-bg {
+  background: linear-gradient(145deg, #143214, #0f2a0f);
+}
+
+/* Hex border (slightly larger, behind) */
+.cr-hex-border {
+  position: absolute;
+  inset: -3px;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+  background: rgba(200,168,75,0.25);
+  transition: background 0.3s;
+}
+.cr-badge:hover .cr-hex-border {
+  background: rgba(200,168,75,0.55);
+}
+
+/* Image inside hex */
+.cr-hex-wrap img {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), filter 0.3s;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cr-badge:hover .cr-hex-wrap img {
+  transform: translate(-50%, -50%) scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Small verified dot */
+.cr-dot-verified {
+  position: absolute;
+  bottom: 6px; right: 6px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #2e7d32;
+  border: 2px solid #061206;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; color: #fff; font-weight: 900;
+  z-index: 2;
+}
+
+/* Text */
+.cr-badge-body {
+  text-align: center;
+}
+.cr-badge-tag {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c8a84b;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  display: block;
+}
+.cr-badge-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: #e8f0e8;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+.cr-badge-desc {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.28);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ── BOTTOM STRIP ── */
+.cr-strip {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+
+.cr-strip-pre {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+}
+
+.cr-strip-link {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.cr-strip-link:hover { color: #6dbf6d; }
+.cr-strip-link svg {
+  opacity: 0.5;
+  transition: opacity 0.25s;
+}
+.cr-strip-link:hover svg { opacity: 1; }
+
+.cr-strip-divider {
+  width: 1px; height: 12px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ── STAGGER ANIMATIONS ── */
+@keyframes cr-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.cr-eyebrow  { animation: cr-up 0.55s ease both; }
+.cr-headline { animation: cr-up 0.55s 0.06s ease both; }
+.cr-badge:nth-child(1) { animation: cr-up 0.55s 0.14s ease both; }
+.cr-badge:nth-child(3) { animation: cr-up 0.55s 0.22s ease both; }
+.cr-badge:nth-child(5) { animation: cr-up 0.55s 0.30s ease both; }
+.cr-strip    { animation: cr-up 0.55s 0.38s ease both; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .cr-grid {
+    grid-template-columns: 1fr;
+    gap: 40px 0;
+  }
+  .cr-sep { display: none; }
+  .cr-badge { padding: 0 16px; }
+}
+</style>
+
+<div class="cr-root">
+  <div class="cr-glow-right"></div>
+
+  <div class="cr-inner">
+
+    <!-- EYEBROW -->
+    <div class="cr-eyebrow">
+      <div class="cr-eyebrow-line"></div>
+      <span class="cr-eyebrow-text">Government Authorized &amp; Certified</span>
+      <div class="cr-eyebrow-line right"></div>
+    </div>
+
+    <!-- HEADLINE -->
+    <div class="cr-headline">
+      <h2>Filing taxes with<br><em>verified</em> authority.</h2>
+      <p>Recognized by the Government of India and State of Rajasthan — credentials you can actually check.</p>
+    </div>
+
+    <!-- BADGES -->
+    <div class="cr-grid">
+
+      <!-- DPIIT -->
+      <div class="cr-badge">
+        <div class="cr-badge-accent"></div>
+        <div class="cr-hex-wrap">
+          <div class="cr-hex-border"></div>
+          <div class="cr-hex-bg"></div>
+          <img src="dpiit.png" alt="DPIIT Startup India" />
+          <div class="cr-dot-verified">✓</div>
+        </div>
+        <div class="cr-badge-body">
+          <span class="cr-badge-tag">DPIIT · Central Govt.</span>
+          <div class="cr-badge-name">Startup India<br>Recognized</div>
+          <div class="cr-badge-desc">Officially recognized under<br>the Startup India initiative</div>
+        </div>
+      </div>
+
+      <div class="cr-sep"></div>
+
+      <!-- iSTART -->
+      <div class="cr-badge">
+        <div class="cr-badge-accent"></div>
+        <div class="cr-hex-wrap">
+          <div class="cr-hex-border"></div>
+          <div class="cr-hex-bg"></div>
+          <img src="istart.png" alt="iSTART Rajasthan" />
+          <div class="cr-dot-verified">✓</div>
+        </div>
+        <div class="cr-badge-body">
+          <span class="cr-badge-tag">iSTART · Rajasthan Govt.</span>
+          <div class="cr-badge-name">iSTART<br>Supported</div>
+          <div class="cr-badge-desc">Supported by the<br>State of Rajasthan</div>
+        </div>
+      </div>
+
+      <div class="cr-sep"></div>
+
+      <!-- ISO -->
+      <div class="cr-badge">
+        <div class="cr-badge-accent"></div>
+        <div class="cr-hex-wrap">
+          <div class="cr-hex-border"></div>
+          <div class="cr-hex-bg"></div>
+          <img src="iso.png" alt="ISO 9001:2015" />
+          <div class="cr-dot-verified">✓</div>
+        </div>
+        <div class="cr-badge-body">
+          <span class="cr-badge-tag">ISO · Quality Standard</span>
+          <div class="cr-badge-name">ISO 9001:2015<br>Certified</div>
+          <div class="cr-badge-desc">International standard for<br>Quality Management</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM STRIP -->
+    <div class="cr-strip">
+      <span class="cr-strip-pre">Verify at</span>
+      <a href="https://www.startupindia.gov.in" target="_blank" class="cr-strip-link">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        startupindia.gov.in
+      </a>
+      <div class="cr-strip-divider"></div>
+      <a href="https://istat.rajasthan.gov.in" target="_blank" class="cr-strip-link">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        istat.rajasthan.gov.in
+      </a>
+    </div>
+
+  </div>
+</div>

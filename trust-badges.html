@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trust Badges</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep: #2d6a2d;
+      --green-mid: #4a9a4a;
+      --green-light: #6ab86a;
+      --gold: #c9a84c;
+      --gold-light: #e8cc80;
+      --off-white: #fafaf8;
+      --text-dark: #1a1a1a;
+      --text-mid: #4a4a4a;
+      --text-muted: #888;
+      --border: #e0e8e0;
+    }
+
+    body {
+      background: var(--off-white);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .trust-section {
+      position: relative;
+      background: var(--off-white);
+      padding: 72px 24px 64px;
+      overflow: hidden;
+    }
+
+    /* Subtle decorative backdrop */
+    .trust-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(74,154,74,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 20% 100%, rgba(201,168,76,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Thin accent line at top */
+    .trust-section::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 3px;
+      background: linear-gradient(90deg, var(--green-mid), var(--gold));
+      border-radius: 0 0 4px 4px;
+    }
+
+    .trust-inner {
+      position: relative;
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 40px 48px;
+    }
+
+    /* ── BADGE CARDS ── */
+    .badge-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .badge-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 24px 28px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(45,106,45,0.06), 0 1px 3px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      max-width: 220px;
+    }
+
+    .badge-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(45,106,45,0.13), 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .badge-card img {
+      height: 90px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .badge-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ── CENTER CONTENT ── */
+    .center-content {
+      text-align: center;
+      max-width: 340px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--green-mid);
+      opacity: 0.5;
+    }
+
+    .center-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .center-title .accent {
+      color: var(--green-mid);
+      position: relative;
+    }
+
+    /* Underline decoration on the accent word */
+    .center-title .accent::after {
+      content: '';
+      position: absolute;
+      bottom: 2px; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green-light), var(--gold-light));
+      border-radius: 2px;
+      opacity: 0.6;
+    }
+
+    /* Divider */
+    .center-divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green-mid), var(--gold));
+      border-radius: 2px;
+      margin: 0 auto 20px;
+    }
+
+    .gov-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .gov-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .gov-links a:hover { color: var(--green-mid); }
+
+    /* ── VERTICAL DIVIDERS ── */
+    .v-divider {
+      display: none; /* hidden on small, shown via grid placement */
+    }
+
+    /* ── ISO BADGE (standalone, bottom center) ── */
+    .iso-row {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge-card { animation: fadeUp 0.5s ease both; }
+    .badge-card:nth-child(2) { animation-delay: 0.1s; }
+    .center-content { animation: fadeUp 0.5s 0.05s ease both; }
+    .iso-row .badge-card { animation-delay: 0.2s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 820px) {
+      .trust-inner {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      .badge-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .badge-card { max-width: 180px; }
+      .center-title { font-size: 2rem; }
+      .iso-row { margin-top: 4px; }
+    }
+
+    @media (max-width: 480px) {
+      .trust-section { padding: 48px 16px; }
+      .center-title { font-size: 1.8rem; }
+      .badge-card { padding: 18px 20px; }
+      .badge-card img { height: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="trust-section">
+  <div class="trust-inner">
+
+    <!-- LEFT: DPIIT + iSTART -->
+    <div class="badge-group">
+      <div class="badge-card">
+        <img src="dpiit.png" alt="DPIIT Startup India Recognized" />
+        <span class="badge-label">Startup India Recognized</span>
+      </div>
+      <div class="badge-card">
+        <img src="istart.png" alt="iSTART Rajasthan" />
+        <span class="badge-label">iSTART Rajasthan</span>
+      </div>
+    </div>
+
+    <!-- CENTER: Text -->
+    <div class="center-content">
+      <div class="eyebrow">Government-Authorized Expertise</div>
+      <h2 class="center-title">
+        A Partner in<br>
+        Compliance &amp; <span class="accent">Growth</span>
+      </h2>
+      <div class="center-divider"></div>
+      <div class="gov-links">
+        <a href="https://www.startupindia.gov.in" target="_blank">www.startupindia.gov.in</a>
+        <a href="https://istat.rajasthan.gov.in" target="_blank">istat.rajasthan.gov.in</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: ISO -->
+    <div class="badge-group">
+      <div class="badge-card">
+        <img src="iso.png" alt="ISO 9001:2015 Certified" />
+        <span class="badge-label">ISO 9001:2015 Certified</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

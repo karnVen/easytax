@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercehq — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:#f0f4f8}
+  body{font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#4361EE 0%,#4361EE 45%,#e8edf5 45%)}
+
+  /* ── WRAPPER ── */
+  .dashboard{display:flex;width:1200px;height:720px;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.22)}
+
+  /* ── SIDEBAR ── */
+  .sidebar{width:204px;min-width:204px;background:#4361EE;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .sidebar-logo{margin:22px 16px 18px;background:#fff;border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:9px}
+  .logo-icon{width:30px;height:30px;background:#4361EE;border-radius:8px;display:flex;align-items:center;justify-content:center}
+  .logo-icon svg{width:16px;height:16px;fill:#fff}
+  .logo-text{font-size:14px;font-weight:700;color:#1e2d6b;letter-spacing:-.2px}
+  .nav{padding:0 0 0 0;flex:1}
+  .nav-item{display:flex;align-items:center;gap:10px;padding:10px 16px;cursor:pointer;position:relative;transition:all .15s}
+  .nav-item .nav-icon{width:18px;height:18px;opacity:.6;flex-shrink:0}
+  .nav-item .nav-label{font-size:13px;font-weight:500;color:rgba(255,255,255,.65)}
+  .nav-item:hover .nav-label{color:#fff}
+  .nav-item:hover .nav-icon{opacity:1}
+  .nav-item.active{background:rgba(255,255,255,.18);border-radius:0}
+  .nav-item.active .nav-label{color:#fff;font-weight:600}
+  .nav-item.active .nav-icon{opacity:1}
+  .nav-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#fff;border-radius:0 3px 3px 0}
+  .funnel-toggle{margin-left:auto;width:28px;height:16px;background:rgba(255,255,255,.25);border-radius:20px;position:relative;cursor:pointer}
+  .funnel-toggle::after{content:'';position:absolute;right:2px;top:2px;width:12px;height:12px;background:#fff;border-radius:50%}
+  .sidebar-illo{margin-top:auto;padding:0 10px 0;display:flex;justify-content:center}
+  .sidebar-illo svg{width:160px;opacity:.9}
+  .sidebar-cta{margin:10px 14px 18px;background:#3B82F6;border:none;border-radius:8px;color:#fff;font-family:inherit;font-size:11.5px;font-weight:700;letter-spacing:.6px;padding:10px;cursor:pointer;width:calc(100% - 28px);text-transform:uppercase}
+  .sidebar-cta:hover{background:#2563eb}
+
+  /* ── MAIN ── */
+  .main{flex:1;display:flex;flex-direction:column;background:#f5f7fb;overflow:hidden}
+
+  /* topbar */
+  .topbar{background:#fff;display:flex;align-items:center;padding:14px 24px;gap:14px;border-bottom:1px solid #eef0f5;flex-shrink:0}
+  .search-box{flex:1;max-width:480px;display:flex;align-items:center;gap:8px;background:#f5f7fb;border:1px solid #eef0f5;border-radius:10px;padding:8px 14px}
+  .search-box input{border:none;background:transparent;font-family:inherit;font-size:13px;color:#64748b;outline:none;width:100%}
+  .search-box input::placeholder{color:#aab0be}
+  .search-icon{color:#aab0be;flex-shrink:0}
+  .topbar-spacer{flex:1}
+  .notif-badge{background:#f8a4a8;color:#c0142a;font-size:11px;font-weight:700;padding:4px 9px;border-radius:20px;letter-spacing:.2px}
+  .user-avatar{width:36px;height:36px;border-radius:10px;overflow:hidden;cursor:pointer}
+  .user-avatar svg{width:36px;height:36px}
+
+  /* content */
+  .content-area{padding:22px 24px;overflow-y:auto;flex:1}
+
+  /* funnels section */
+  .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .section-title{font-size:15px;font-weight:700;color:#1a2340}
+  .carousel-ctrl{display:flex;align-items:center;gap:5px}
+  .cc-btn{width:26px;height:26px;border:1.5px solid #dde3ef;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:#8896b0;transition:.15s}
+  .cc-btn:hover{background:#f0f4ff;border-color:#c4cfea}
+  .cc-dot{width:8px;height:8px;border-radius:50%;background:#4361EE;border:2px solid #4361EE}
+
+  /* metric cards row */
+  .metrics-row{display:flex;gap:12px;margin-bottom:22px;overflow:hidden}
+  .metric-card{flex:1;min-width:0;background:#fff;border:1px solid #eef0f5;border-radius:14px;padding:16px 14px 14px;cursor:pointer;transition:.15s}
+  .metric-card:hover{border-color:#c4cfea;box-shadow:0 4px 16px rgba(67,97,238,.08)}
+  .mc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:28px}
+  .mc-icon.blue{background:#EFF3FF}
+  .mc-icon svg{width:22px;height:22px}
+  .mc-label{font-size:11.5px;color:#8896b0;font-weight:500;margin-bottom:4px}
+  .mc-row{display:flex;align-items:baseline;gap:6px}
+  .mc-value{font-size:19px;font-weight:700;color:#1a2340}
+  .mc-badge{font-size:11px;font-weight:600;color:#10b981;background:#edfaf5;padding:2px 6px;border-radius:20px}
+  .mc-badge.up::before{content:'▲ '}
+  .mc-badge.dn{color:#ef4444;background:#fef2f2}
+  .mc-badge.dn::before{content:'▼ '}
+
+  /* luxury product */
+  .product-section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .view-all{font-size:12px;font-weight:600;color:#4361EE;display:flex;align-items:center;gap:3px;cursor:pointer}
+  .product-list{background:#fff;border:1px solid #eef0f5;border-radius:14px;overflow:hidden}
+  .product-row{display:flex;align-items:center;padding:12px 16px;gap:14px;border-bottom:1px solid #f5f7fb;transition:.1s;cursor:pointer}
+  .product-row:last-child{border-bottom:none}
+  .product-row:hover{background:#fafbff}
+  .product-thumb{width:56px;height:56px;border-radius:10px;overflow:hidden;background:#f5f7fb;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .product-thumb img,.product-thumb svg{width:100%;height:100%;object-fit:cover}
+  .product-meta{flex:1.8;min-width:0}
+  .product-name{font-size:13px;font-weight:600;color:#1a2340;margin-bottom:4px}
+  .product-price{display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:#1a2340}
+  .price-dot{width:14px;height:14px;background:#10b981;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .price-dot svg{width:8px;height:8px;fill:#fff}
+  .stat-grp{flex:1;min-width:0}
+  .stat-lbl{font-size:10.5px;color:#aab0be;font-weight:500;margin-bottom:3px}
+  .stat-val{font-size:12.5px;font-weight:600;color:#1a2340}
+  .more-dots{color:#c4cfea;font-size:18px;cursor:pointer;padding:0 4px;letter-spacing:1px}
+  .more-dots:hover{color:#8896b0}
+
+  /* ── RIGHT PANEL ── */
+  .right-panel{width:264px;min-width:264px;background:#fff;border-left:1px solid #eef0f5;display:flex;flex-direction:column;overflow-y:auto}
+  .rp-topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 12px;border-bottom:1px solid #eef0f5;flex-shrink:0}
+  .rp-title{font-size:14px;font-weight:700;color:#1a2340}
+  .insight-btn{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#4361EE;background:#EFF3FF;border:none;border-radius:20px;padding:5px 10px;cursor:pointer;font-family:inherit}
+
+  /* live card */
+  .live-card{margin:12px;background:#4361EE;border-radius:14px;padding:14px;position:relative;overflow:hidden}
+  .live-card::after{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .live-expand{position:absolute;top:10px;right:10px;width:20px;height:20px;background:rgba(255,255,255,.2);border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:10px}
+  .live-label{font-size:10.5px;color:rgba(255,255,255,.75);font-weight:500;margin-bottom:4px;text-transform:none}
+  .live-count{font-size:28px;font-weight:800;color:#fff;line-height:1}
+  .live-sub{font-size:11px;color:rgba(255,255,255,.65);margin-top:4px;margin-bottom:8px}
+  .sparkline-wrap{height:38px;position:relative;margin-bottom:6px}
+  .live-report{font-size:10px;color:rgba(255,255,255,.7);font-weight:700;letter-spacing:.6px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:3px}
+  .live-report:hover{color:#fff}
+
+  /* insight card */
+  .insight-card{margin:0 12px 12px;background:#f8fafc;border:1px solid #eef0f5;border-radius:12px;padding:12px}
+  .ic-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+  .ic-avatar{width:28px;height:28px;background:#dbeafe;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#1d4ed8}
+  .ic-dots{color:#c4cfea;font-size:16px;cursor:pointer;letter-spacing:1px;line-height:1;margin-top:2px}
+  .ic-heading{font-size:13px;font-weight:700;color:#1a2340;margin-bottom:5px}
+  .ic-body{font-size:12px;color:#64748b;line-height:1.55}
+  .ic-body strong{color:#1a2340;font-weight:700}
+  .ic-links{display:flex;gap:0;margin-top:10px}
+  .ic-link{font-size:10.5px;font-weight:700;color:#4361EE;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:2px;padding:4px 10px;border:1px solid #dde3ef;background:#fff;border-radius:20px;margin-right:6px}
+  .ic-link:hover{background:#EFF3FF}
+
+  /* revenue */
+  .revenue-section{padding:4px 16px 16px}
+  .rev-title{font-size:13.5px;font-weight:700;color:#1a2340;margin-bottom:10px}
+  .rev-row{display:flex;align-items:center;padding:9px 0;border-bottom:1.5px solid #1a2340}
+  .rev-row:last-child{border-bottom:none}
+  .rev-channel{font-size:12.5px;color:#1a2340;font-weight:500;flex:1}
+  .rev-amount{font-size:12.5px;color:#1a2340;font-weight:500;margin-right:10px}
+  .rev-pct{font-size:12px;font-weight:700;min-width:40px;text-align:right}
+  .pct-green{color:#10b981}
+  .pct-red{color:#ef4444}
+
+  /* scrollbar */
+  .content-area::-webkit-scrollbar,.right-panel::-webkit-scrollbar{width:4px}
+  .content-area::-webkit-scrollbar-thumb,.right-panel::-webkit-scrollbar-thumb{background:#dde3ef;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- ══════════ SIDEBAR ══════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 16 16"><path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 2.5c1.38 0 2.5 1.12 2.5 2.5S9.38 8.5 8 8.5 5.5 7.38 5.5 6 6.62 3.5 8 3.5zM8 13c-1.75 0-3.29-.9-4.2-2.26C3.82 9.62 5.8 8.75 8 8.75s4.18.87 4.2 1.99C11.29 12.1 9.75 13 8 13z"/></svg>
+      </div>
+      <span class="logo-text">Commercehq</span>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l2.5 2.5"/></svg>
+        <span class="nav-label">Dashboard</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><path d="M3 3h12v4H3zM3 9h5v6H3zM10 9h5v6h-5z"/></svg>
+        <span class="nav-label">Products</span>
+      </div>
+      <div class="nav-item active">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 4h12M5 8h8M7 12h4"/></svg>
+        <span class="nav-label">Funnels</span>
+        <div class="funnel-toggle"></div>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><path d="M2 4h14v10a1 1 0 01-1 1H3a1 1 0 01-1-1V4z"/><path d="M2 4l7 6 7-6"/></svg>
+        <span class="nav-label">Orders</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="10" y="2" width="6" height="6" rx="1"/><rect x="2" y="10" width="6" height="6" rx="1"/><rect x="10" y="10" width="6" height="6" rx="1"/></svg>
+        <span class="nav-label">Membership</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><path d="M4 2h10a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M6 6h6M6 9h6M6 12h4"/></svg>
+        <span class="nav-label">Conetent Area</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><circle cx="9" cy="9" r="2.5"/><path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.22 3.22l1.41 1.41M13.36 13.36l1.41 1.41M3.22 14.78l1.41-1.41M13.36 4.64l1.41-1.41"/></svg>
+        <span class="nav-label">Settings</span>
+      </div>
+    </nav>
+
+    <!-- Illustration -->
+    <div class="sidebar-illo">
+      <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- ground waves -->
+        <path d="M10 105 Q40 98 70 105 Q100 112 130 105" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none"/>
+        <path d="M20 112 Q55 105 90 112 Q115 117 140 112" stroke="rgba(255,255,255,.2)" stroke-width="1.5" fill="none"/>
+        <!-- bench legs -->
+        <rect x="30" y="85" width="5" height="18" rx="2" fill="rgba(255,255,255,.5)"/>
+        <rect x="75" y="85" width="5" height="18" rx="2" fill="rgba(255,255,255,.5)"/>
+        <!-- bench seat -->
+        <rect x="22" y="80" width="66" height="8" rx="3" fill="rgba(255,255,255,.6)"/>
+        <!-- bench back -->
+        <rect x="22" y="65" width="66" height="6" rx="3" fill="rgba(255,255,255,.4)"/>
+        <!-- person body -->
+        <ellipse cx="65" cy="75" rx="12" ry="14" fill="rgba(255,255,255,.9)"/>
+        <!-- person legs -->
+        <path d="M58 88 Q55 97 50 100" stroke="rgba(255,255,255,.9)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M58 88 Q60 97 58 103" stroke="rgba(255,255,255,.9)" stroke-width="5" stroke-linecap="round"/>
+        <path d="M50 100 Q45 101 43 100" stroke="rgba(255,255,255,.9)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M58 103 Q53 104 51 103" stroke="rgba(255,255,255,.9)" stroke-width="4" stroke-linecap="round"/>
+        <!-- person head -->
+        <circle cx="65" cy="58" r="10" fill="rgba(255,255,255,.9)"/>
+        <!-- laptop -->
+        <rect x="72" y="74" width="22" height="14" rx="2" fill="#2d3a8c"/>
+        <rect x="68" y="87" width="28" height="3" rx="1.5" fill="#1e2875"/>
+        <!-- screen glow -->
+        <rect x="74" y="76" width="18" height="10" rx="1" fill="#5b7de8"/>
+        <!-- arm to laptop -->
+        <path d="M72 76 Q70 80 73 83" stroke="rgba(255,255,255,.9)" stroke-width="4" stroke-linecap="round"/>
+        <!-- floating elements -->
+        <circle cx="105" cy="50" r="6" fill="rgba(255,255,255,.2)"/>
+        <circle cx="118" cy="65" r="4" fill="rgba(255,255,255,.15)"/>
+        <circle cx="98" cy="70" r="3" fill="rgba(255,255,255,.1)"/>
+        <!-- cursor -->
+        <path d="M115 45 L110 58 L113 56 L115 62 L116 56 L120 57z" fill="rgba(255,255,255,.7)"/>
+      </svg>
+    </div>
+
+    <button class="sidebar-cta">Upgrade Your Plan</button>
+  </aside>
+
+  <!-- ══════════ MAIN ══════════ -->
+  <main class="main">
+    <!-- topbar -->
+    <div class="topbar">
+      <div class="search-box">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="#aab0be" stroke-width="1.5"/><path d="M10 10l2.5 2.5" stroke="#aab0be" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input type="text" placeholder="Search...">
+      </div>
+      <div class="topbar-spacer"></div>
+      <div class="notif-badge">04</div>
+      <!-- avatar illustration -->
+      <div class="user-avatar">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="#f0f4ff"/>
+          <circle cx="18" cy="14" r="6" fill="#4361EE"/>
+          <ellipse cx="18" cy="28" rx="9" ry="6" fill="#4361EE"/>
+          <!-- hat -->
+          <rect x="11" y="10" width="14" height="3" rx="1.5" fill="#1e2d6b"/>
+          <rect x="14" y="7" width="8" height="4" rx="2" fill="#1e2d6b"/>
+          <!-- face highlights -->
+          <circle cx="16" cy="15" r="1" fill="#fff" opacity=".6"/>
+          <circle cx="20" cy="15" r="1" fill="#fff" opacity=".6"/>
+          <path d="M16 17.5 Q18 19 20 17.5" stroke="#fff" stroke-width="1" stroke-linecap="round" opacity=".8"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- scrollable content -->
+    <div class="content-area">
+
+      <!-- funnels section -->
+      <div class="section-head">
+        <span class="section-title">Growing Super Human Rate Funnels</span>
+        <div class="carousel-ctrl">
+          <button class="cc-btn">&#8249;</button>
+          <div class="cc-dot"></div>
+          <button class="cc-btn">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- metric cards -->
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="mc-icon blue">
+            <svg viewBox="0 0 22 22" fill="none"><path d="M3 5h16l-1.5 9H4.5L3 5z" stroke="#4361EE" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 5l-.5-2H1" stroke="#4361EE" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="18" r="1.5" fill="#4361EE"/><circle cx="16" cy="18" r="1.5" fill="#4361EE"/><path d="M7 9h8M9 12h4" stroke="#4361EE" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="mc-label">Total Views</div>
+          <div class="mc-row">
+            <span class="mc-value">23,50</span>
+            <span class="mc-badge up">47%</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="mc-icon blue">
+            <svg viewBox="0 0 22 22" fill="none"><rect x="3" y="4" width="16" height="14" rx="2" stroke="#4361EE" stroke-width="1.5"/><path d="M3 9h16" stroke="#4361EE" stroke-width="1.5"/><path d="M7 4V2M15 4V2" stroke="#4361EE" stroke-width="1.5" stroke-linecap="round"/><text x="8" y="16" font-size="5" fill="#4361EE" font-weight="700" font-family="Plus Jakarta Sans">31</text></svg>
+          </div>
+          <div class="mc-label">Total Orders</div>
+          <div class="mc-row">
+            <span class="mc-value">31,512</span>
+            <span class="mc-badge up">27%</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="mc-icon blue">
+            <svg viewBox="0 0 22 22" fill="none"><path d="M4 16l4-4 3 3 4-5 3 3" stroke="#4361EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="7" r="3" fill="#EFF3FF" stroke="#4361EE" stroke-width="1.5"/><path d="M16.5 6.5l1 1 1.5-1.5" stroke="#4361EE" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="mc-label">Avg Orders</div>
+          <div class="mc-row">
+            <span class="mc-value">12,454</span>
+            <span class="mc-badge up">47%</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="mc-icon blue">
+            <svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#4361EE" stroke-width="1.5"/><path d="M7.5 14.5l7-7" stroke="#4361EE" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="8.5" r="1.5" fill="#4361EE"/><circle cx="13.5" cy="13.5" r="1.5" fill="#4361EE"/></svg>
+          </div>
+          <div class="mc-label">Conversion Rate</div>
+          <div class="mc-row">
+            <span class="mc-value">64.3%</span>
+            <span class="mc-badge up">57%</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="mc-icon blue">
+            <svg viewBox="0 0 22 22" fill="none"><rect x="3" y="8" width="4" height="9" rx="1" fill="#dce8ff" stroke="#4361EE" stroke-width="1.3"/><rect x="9" y="5" width="4" height="12" rx="1" fill="#dce8ff" stroke="#4361EE" stroke-width="1.3"/><rect x="15" y="2" width="4" height="15" rx="1" fill="#dce8ff" stroke="#4361EE" stroke-width="1.3"/></svg>
+          </div>
+          <div class="mc-label">Total Sales</div>
+          <div class="mc-row">
+            <span class="mc-value">23,34</span>
+            <span class="mc-badge up">38%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- luxury product section -->
+      <div class="product-section-head">
+        <span class="section-title">Luxury Product</span>
+        <div class="view-all">VIEW ALL <span>&#9658;</span></div>
+      </div>
+
+      <div class="product-list">
+        <!-- Homepod -->
+        <div class="product-row">
+          <div class="product-thumb">
+            <svg viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#f0f4f8"/><ellipse cx="28" cy="38" rx="10" ry="4" fill="#dde3ef"/><path d="M20 38 Q18 20 28 14 Q38 20 36 38z" fill="#e8edf5" stroke="#c4cfea" stroke-width="1"/><ellipse cx="28" cy="14" rx="6" ry="3" fill="#c4cfea"/><circle cx="28" cy="28" r="3" fill="#b0b8cc" opacity=".5"/></svg>
+          </div>
+          <div class="product-meta">
+            <div class="product-name">Homepod</div>
+            <div class="product-price">
+              <div class="price-dot"><svg viewBox="0 0 8 8"><path d="M2 4l2 2 3-3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              $1,34,54.95
+            </div>
+          </div>
+          <div class="stat-grp"><div class="stat-lbl">Total Sales</div><div class="stat-val">573</div></div>
+          <div class="stat-grp"><div class="stat-lbl">Orders</div><div class="stat-val">$ 2,318.90</div></div>
+          <div class="stat-grp"><div class="stat-lbl">Views</div><div class="stat-val">$ 3,318.90</div></div>
+          <div class="stat-grp"><div class="stat-lbl">Rate</div><div class="stat-val">$ 7,318.10</div></div>
+          <div class="more-dots">···</div>
+        </div>
+
+        <!-- Luxury Products -->
+        <div class="product-row">
+          <div class="product-thumb">
+            <svg viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#1a1a1a"/><circle cx="28" cy="26" r="14" fill="#e8505b"/><circle cx="24" cy="22" r="4" fill="rgba(255,255,255,.15)"/><ellipse cx="28" cy="40" rx="12" ry="3" fill="rgba(255,255,255,.1)"/></svg>
+          </div>
+          <div class="product-meta">
+            <div class="product-name">Luxury Products</div>
+            <div class="product-price">
+              <div class="price-dot"><svg viewBox="0 0 8 8"><path d="M2 4l2 2 3-3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              $3,25,49.95
+            </div>
+          </div>
+          <div class="stat-grp"><div class="stat-lbl">Total Sales</div><div class="stat-val">573</div></div>
+          <div class="stat-grp"><div class="stat-lbl">Orders</div><div class="stat-val">$ 6,456.90</div></div>
+          <div class="stat-grp"><div class="stat-lbl">Views</div><div class="stat-val">$ 7,7565.90</div></div>
+          <div class="stat-grp"><div class="stat-lbl">Rate</div><div class="stat-val">$ 4,318.20</div></div>
+          <div class="more-dots">···</div>
+        </div>
+
+        <!-- Luxury Chair -->
+        <div class="product-row">
+          <div class="product-thumb">
+            <svg viewBox="0 0 56 56" fill="none"><rect width="56" height="56" fill="#f5f7fb"/><ellipse cx="28" cy="22" rx="12" ry="7" fill="#e8edf5" stroke="#c4cfea" stroke-width="1"/><rect x="16" y="26" width="24" height="4" rx="2" fill="#d0d8e8"/><path d="M20 30 L18 46" stroke="#c4cfea" stroke-width="2" stroke-linecap="round"/><path d="M36 30 L38 46" stroke="#c4cfea" stroke-width="2" stroke-linecap="round"/><ellipse cx="28" cy="46" rx="10" ry="2.5" fill="#c4cfea" opacity=".5"/><rect x="14" y="18" width="28" height="9" rx="4" fill="#f0f4f8" stroke="#c4cfea" stroke-width="1"/></svg>
+          </div>
+          <div class="product-meta">
+            <div class="product-name">Luxury Chair</div>
+            <div class="product-price">
+              <div class="price-dot"><svg viewBox="0 0 8 8"><path d="M2 4l2 2 3-3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              $1,34,29.95
+            </div>
+          </div>
+          <div class="stat-grp"><div class="stat-lbl">Total Sales</div><div class="stat-val">573</div></div>
+          <div class="stat-grp"><div class="stat-lbl">Orders</div><div class="stat-val">$ 7,768.90</div></div>
+          <div class="stat-grp"><div class="stat-lbl">Views</div><div class="stat-val">$ 94,454.90</div></div>
+          <div class="stat-grp"><div class="stat-lbl">Rate</div><div class="stat-val">$ 5,34.40</div></div>
+          <div class="more-dots">···</div>
+        </div>
+      </div>
+
+    </div><!-- /content-area -->
+  </main>
+
+  <!-- ══════════ RIGHT PANEL ══════════ -->
+  <aside class="right-panel">
+    <div class="rp-topbar">
+      <span class="rp-title">Activity</span>
+      <button class="insight-btn">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="#4361EE" stroke-width="1.3"/><path d="M6.5 6v3.5" stroke="#4361EE" stroke-width="1.3" stroke-linecap="round"/><circle cx="6.5" cy="4" r=".7" fill="#4361EE"/></svg>
+        INSIGHT
+        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 3.5l2.5 2.5L7 3.5" stroke="#4361EE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <!-- live visitors card -->
+    <div class="live-card">
+      <div class="live-expand">&#8599;</div>
+      <div class="live-label">Active Visitors right now</div>
+      <div class="live-count">3467</div>
+      <div class="live-sub">Page view per minute</div>
+      <div class="sparkline-wrap">
+        <canvas id="sparkChart" role="img" aria-label="Real-time sparkline showing page views per minute">Sparkline of live page views</canvas>
+      </div>
+      <div class="live-report">REAL-TIME REPORT &#9658;</div>
+    </div>
+
+    <!-- insight card -->
+    <div class="insight-card">
+      <div class="ic-top">
+        <div class="ic-avatar">SK</div>
+        <div class="ic-dots">⋮</div>
+      </div>
+      <div class="ic-heading">In the last 30 days</div>
+      <div class="ic-body"><strong>45.1%</strong> of your abandoned checkout recovery email were successful.</div>
+      <div class="ic-links">
+        <div class="ic-link">LAST 30 DAYS &#9660;</div>
+        <div class="ic-link">CHECK DATA &#9658;</div>
+      </div>
+    </div>
+
+    <!-- revenue by channel -->
+    <div class="revenue-section">
+      <div class="rev-title">Revenue by channel</div>
+      <div class="rev-row">
+        <span class="rev-channel">Direct</span>
+        <span class="rev-amount">$5,24,685</span>
+        <span class="rev-pct pct-green">65.6%</span>
+      </div>
+      <div class="rev-row">
+        <span class="rev-channel">Organic Search</span>
+        <span class="rev-amount">$7,24,685</span>
+        <span class="rev-pct pct-green">45.2%</span>
+      </div>
+      <div class="rev-row">
+        <span class="rev-channel">Refferal</span>
+        <span class="rev-amount">$3,524,685</span>
+        <span class="rev-pct pct-red">15.6%</span>
+      </div>
+      <div class="rev-row">
+        <span class="rev-channel">Social</span>
+        <span class="rev-amount">$343,685</span>
+        <span class="rev-pct pct-red">25.2%</span>
+      </div>
+    </div>
+  </aside>
+
+</div><!-- /dashboard -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+  const ctx = document.getElementById('sparkChart');
+  const pts = [18,25,20,32,28,22,35,30,38,26,42,35,28,45,38,32,48,40,35,50,44,38,52,45,40,55,48,42];
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: pts.map((_,i) => i),
+      datasets: [{
+        data: pts,
+        backgroundColor: 'rgba(255,255,255,0.55)',
+        hoverBackgroundColor: 'rgba(255,255,255,0.8)',
+        borderRadius: 2,
+        barPercentage: 0.65,
+        categoryPercentage: 0.85
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 800 },
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      scales: { x: { display: false }, y: { display: false, min: 0 } }
+    }
+  });
+</script>
+</body>
+</html>
