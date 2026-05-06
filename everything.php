@@ -1,3341 +1,714 @@
-<?php
+@extends('layouts.admin')
 
-return [
-    'itr-filing' => [
-        'label' => '',
-        'sections' => [
-            'personal_details' => [
-                'label' => 'Personal Details',
-                'fields' => [
-                    [
-                        'name' => 'pan_number',
-                        'label' => 'PAN Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|size:10',
-                    ],
-                    [
-                        'name' => 'applicant_name',
-                        'label' => 'Applicant Name (As per PAN)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'father_name',
-                        'label' => 'Father Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'aadhaar_number',
-                        'label' => 'Aadhaar Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:12',
-                    ],
-                    [
-                        'name' => 'date_of_birth',
-                        'label' => 'Date of Birth',
-                        'type' => 'date',
-                        'required' => true,
-                        'validation' => 'required|date',
-                    ],
-                    [
-                        'name' => 'mobile',
-                        'label' => 'Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email',
-                        'label' => 'Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                    [
-                        'name' => 'address',
-                        'label' => 'Residential Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'pin_code',
-                        'label' => 'PIN Code',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:6',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:andhra_pradesh,arunachal_pradesh,assam,bihar,chhattisgarh,goa,gujarat,haryana,himachal_pradesh,jharkhand,karnataka,kerala,madhya_pradesh,maharashtra,manipur,meghalaya,mizoram,nagaland,odisha,punjab,rajasthan,sikkim,tamil_nadu,telangana,tripura,uttar_pradesh,uttarakhand,west_bengal,delhi,jammu_kashmir,ladakh,puducherry,chandigarh,andaman_nicobar,dadra_nagar_haveli_daman_diu,lakshadweep',
-                        'options' => [
-                            'andhra_pradesh' => 'Andhra Pradesh',
-                            'arunachal_pradesh' => 'Arunachal Pradesh',
-                            'assam' => 'Assam',
-                            'bihar' => 'Bihar',
-                            'chhattisgarh' => 'Chhattisgarh',
-                            'goa' => 'Goa',
-                            'gujarat' => 'Gujarat',
-                            'haryana' => 'Haryana',
-                            'himachal_pradesh' => 'Himachal Pradesh',
-                            'jharkhand' => 'Jharkhand',
-                            'karnataka' => 'Karnataka',
-                            'kerala' => 'Kerala',
-                            'madhya_pradesh' => 'Madhya Pradesh',
-                            'maharashtra' => 'Maharashtra',
-                            'manipur' => 'Manipur',
-                            'meghalaya' => 'Meghalaya',
-                            'mizoram' => 'Mizoram',
-                            'nagaland' => 'Nagaland',
-                            'odisha' => 'Odisha',
-                            'punjab' => 'Punjab',
-                            'rajasthan' => 'Rajasthan',
-                            'sikkim' => 'Sikkim',
-                            'tamil_nadu' => 'Tamil Nadu',
-                            'telangana' => 'Telangana',
-                            'tripura' => 'Tripura',
-                            'uttar_pradesh' => 'Uttar Pradesh',
-                            'uttarakhand' => 'Uttarakhand',
-                            'west_bengal' => 'West Bengal',
-                            'delhi' => 'Delhi',
-                            'jammu_kashmir' => 'Jammu & Kashmir',
-                            'ladakh' => 'Ladakh',
-                            'puducherry' => 'Puducherry',
-                            'chandigarh' => 'Chandigarh',
-                            'andaman_nicobar' => 'Andaman & Nicobar Islands',
-                            'dadra_nagar_haveli_daman_diu' => 'Dadra & Nagar Haveli and Daman & Diu',
-                            'lakshadweep' => 'Lakshadweep',
-                        ],
-                    ],
-                ],
-            ],
-            'filing_details' => [
-                'label' => 'Filing Details',
-                'fields' => [
-                    [
-                        'name' => 'itr_type',
-                        'label' => 'Financial/Tax Year',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            '2027-28' => 'F.Y. 2027-28',
-                            '2026-27' => 'F.Y. 2026-27 (Current)',
-                            '2025-26' => 'F.Y. 2025-26 (ITR-U)',
-                            '2024-25' => 'F.Y. 2024-25 (ITR-U)',
-                            '2023-24' => 'F.Y. 2023-24 (ITR-U)',
-                        ],
-                    ],
-                    [
-                        'name' => 'type_user',
-                        'label' => 'User Type',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            'vle' => 'VLE',
-                            'user' => 'User / Citizen',
-                        ],
-                    ],
-                    [
-                        'name' => 'has_business',
-                        'label' => 'Business / Other Income?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                    [
-                        'name' => 'turnover',
-                        'label' => 'Business Turnover',
-                        'type' => 'select',
-                        'required' => false,
-                        'validation' => '',
-                        'options' => [
-                            'less_than_20l' => 'Less than 20 Lakh Sales',
-                            'more_than_20l' => 'More than 20 Lakh Sales',
-                        ],
-                    ],
-                    [
-                        'name' => 'has_salary',
-                        'label' => 'Salary Income?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                    [
-                        'name' => 'salary_amount',
-                        'label' => 'Enter Total Annual Salary Amount',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'has_capital_gains',
-                        'label' => 'Capital Gain Transactions?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                    [
-                        'name' => 'bank_account_type',
-                        'label' => 'Account Type',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            'savings' => 'Savings Account',
-                            'current' => 'Current Account',
-                            'overdraft' => 'Overdraft',
-                            'nro' => 'NRO',
-                        ],
-                    ],
-                    [
-                        'name' => 'income_over_250k',
-                        'label' => 'Is your annual income more than 2,50,000?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                    [
-                        'name' => 'it_password',
-                        'label' => 'Income Tax Password (if available)',
-                        'type' => 'password',
-                        'required' => true,
-                        'validation' => 'nullable|string',
-                    ],
-                ],
-            ],
-            'bank_details' => [
-                'label' => 'Bank Details',
-                'fields' => [
-                    [
-                        'name' => 'bank_account_number',
-                        'label' => 'Bank Account Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'ifsc_code',
-                        'label' => 'IFSC Code',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'bank_account_number2',
-                        'label' => '2nd Bank Account Number(optional)',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                    [
-                        'name' => 'ifsc_code2',
-                        'label' => 'IFSC Code',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|string',
-                    ],
-                    [
-                        'name' => 'bank_account_number3',
-                        'label' => '3rd Bank Account Number(optional)',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                    [
-                        'name' => 'ifsc_code3',
-                        'label' => 'IFSC Code',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                    [
-                        'name' => 'bank_account_number4',
-                        'label' => 'th Bank Account Number(optional)',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                    [
-                        'name' => 'ifsc_code4',
-                        'label' => 'IFSC Code',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'form_16',
-                'label' => 'Form 16 (For Salaried)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'form_26as',
-                'label' => 'Form 26AS / AIS',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'bank_statement',
-                'label' => 'Bank Statement',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'profit_loss_statement',
-                'label' => 'Profit & Loss Statement (For Business)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'xls',
-                    'xlsx',
-                ],
-            ],
-            [
-                'name' => 'balance_sheet',
-                'label' => 'Balance Sheet (If Applicable)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'xls',
-                    'xlsx',
-                ],
-            ],
-            [
-                'name' => 'other_documents',
-                'label' => 'Other Supporting Documents',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'broker_statement',
-                'label' => 'Upload Broker Statement',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-        ],
-    ],
-    'section-8-company' => [
-        'label' => '',
-        'sections' => [
-            'company_details' => [
-                'label' => 'Proposed Company Details',
-                'fields' => [
-                    [
-                        'name' => 'proposed_company_name',
-                        'label' => 'Proposed Company Name (Up to 6 options)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'company_object',
-                        'label' => 'Main Object / Purpose of the Company',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'authorized_capital',
-                        'label' => 'Proposed Authorised Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'paidup_capital',
-                        'label' => 'Proposed Paid-up Share Capital',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'registered_office_address',
-                        'label' => 'Registered Office Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'director_details' => [
-                'label' => 'Director Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_directors',
-                        'label' => 'Number of Directors (Minimum 2)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:2',
-                    ],
-                    [
-                        'name' => 'resident_director',
-                        'label' => 'Is at least one Director Resident in India?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                ],
-            ],
-            'contact_details' => [
-                'label' => 'Contact Details',
-                'fields' => [
-                    [
-                        'name' => 'contact_mobile',
-                        'label' => 'Contact Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'contact_email',
-                        'label' => 'Contact Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'director_pan',
-                'label' => 'Director PAN Card (Self Attested)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'director_address_proof',
-                'label' => 'Director Address Proof (Self Attested)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo',
-                'label' => 'Passport Size Photo of Directors',
-                'required' => true,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'office_address_proof',
-                'label' => 'Registered Office Address Proof (Utility Bill / Rent Agreement)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'noc_from_owner',
-                'label' => 'NOC from Property Owner (If Rented)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'moa_draft',
-                'label' => 'Draft Memorandum of Association (MOA)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'aoa_draft',
-                'label' => 'Draft Articles of Association (AOA)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-        ],
-    ],
-    'fpo-registration' => [
-        'label' => '',
-        'sections' => [
-            'basic_details' => [
-                'label' => 'Basic FPO Details',
-                'fields' => [
-                    [
-                        'name' => 'fpo_type',
-                        'label' => 'Type of FPO',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:producer_company,cooperative_society,farmer_group,other',
-                        'options' => [
-                            'producer_company' => 'Producer Company',
-                            'cooperative_society' => 'Cooperative Society',
-                            'farmer_group' => 'Farmer Group',
-                            'other' => 'Other',
-                        ],
-                    ],
-                    [
-                        'name' => 'proposed_name',
-                        'label' => 'Proposed FPO Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'primary_activity',
-                        'label' => 'Primary Agricultural / Allied Activity',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'member_details' => [
-                'label' => 'Member Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_members',
-                        'label' => 'Number of Members',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:1',
-                    ],
-                    [
-                        'name' => 'average_land_holding',
-                        'label' => 'Average Land Holding (if applicable)',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                    [
-                        'name' => 'member_category',
-                        'label' => 'Member Category',
-                        'type' => 'select',
-                        'required' => false,
-                        'validation' => 'nullable|string|in:small,marginal,mixed',
-                        'options' => [
-                            'small' => 'Small',
-                            'marginal' => 'Marginal',
-                            'mixed' => 'Mixed',
-                        ],
-                    ],
-                ],
-            ],
-            'capital_details' => [
-                'label' => 'Capital Details (Applicable for Producer Company)',
-                'fields' => [
-                    [
-                        'name' => 'authorized_capital',
-                        'label' => 'Authorized Capital',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'paidup_capital',
-                        'label' => 'Paid-up Capital',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                ],
-            ],
-            'contact_details' => [
-                'label' => 'Contact Details',
-                'fields' => [
-                    [
-                        'name' => 'contact_person',
-                        'label' => 'Contact Person Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile',
-                        'label' => 'Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email',
-                        'label' => 'Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'member_list',
-                'label' => 'List of Members (Mandatory for Registration)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'xls',
-                    'xlsx',
-                ],
-            ],
-            [
-                'name' => 'identity_proof_members',
-                'label' => 'Identity Proof of Members/Promoters',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'land_proof',
-                'label' => 'Land Ownership Proof (If Applicable)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'resolution_copy',
-                'label' => 'Resolution Copy / Consent Letter (If Applicable)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-        ],
-    ],
-    'ngo-trust-registration' => [
-        'label' => '',
-        'sections' => [
-            'company_details' => [
-                'label' => 'Proposed Company Details',
-                'fields' => [
-                    [
-                        'name' => 'proposed_company_name',
-                        'label' => 'Proposed Company Name (Up to 6 options)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'company_object',
-                        'label' => 'Main Object / Purpose of the Company',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'authorized_capital',
-                        'label' => 'Proposed Authorised Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'paidup_capital',
-                        'label' => 'Proposed Paid-up Share Capital',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'registered_office_address',
-                        'label' => 'Registered Office Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'director_details' => [
-                'label' => 'Director Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_directors',
-                        'label' => 'Number of Directors (Minimum 2)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:2',
-                    ],
-                    [
-                        'name' => 'resident_director',
-                        'label' => 'Is at least one Director Resident in India?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                ],
-            ],
-            'contact_details' => [
-                'label' => 'Contact Details',
-                'fields' => [
-                    [
-                        'name' => 'contact_mobile',
-                        'label' => 'Contact Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'contact_email',
-                        'label' => 'Contact Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'director_pan',
-                'label' => 'Director PAN Card (Self Attested)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'director_address_proof',
-                'label' => 'Director Address Proof (Self Attested)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo',
-                'label' => 'Passport Size Photo of Directors',
-                'required' => true,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'office_address_proof',
-                'label' => 'Registered Office Address Proof (Utility Bill / Rent Agreement)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'noc_from_owner',
-                'label' => 'NOC from Property Owner (If Rented)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'moa_draft',
-                'label' => 'Draft Memorandum of Association (MOA)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'aoa_draft',
-                'label' => 'Draft Articles of Association (AOA)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-        ],
-    ],
-    'gst-registration' => [
-        'label' => '',
-        'sections' => [
-            'applicant_details' => [
-                'label' => 'Applicant Details',
-                'fields' => [
-                    [
-                        'name' => 'applicant_name',
-                        'label' => 'Applicant Name (As per PAN)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'father_name',
-                        'label' => 'Father Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'pan_number',
-                        'label' => 'PAN Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|size:10|regex:/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/',
-                    ],
-                    [
-                        'name' => 'aadhaar_number',
-                        'label' => 'Aadhaar Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:12',
-                    ],
-                    [
-                        'name' => 'date_of_birth',
-                        'label' => 'Date of Birth',
-                        'type' => 'date',
-                        'required' => true,
-                        'validation' => 'required|date',
-                    ],
-                    [
-                        'name' => 'mobile',
-                        'label' => 'Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email',
-                        'label' => 'Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                    [
-                        'name' => 'residential_address',
-                        'label' => 'Residential Address (As per Aadhaar)',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'business_details' => [
-                'label' => 'Business Details',
-                'fields' => [
-                    [
-                        'name' => 'legal_name_of_business',
-                        'label' => 'Legal Name of Business (As per PAN)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'trade_name',
-                        'label' => 'Trade Name (If Any)',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'constitution_of_business',
-                        'label' => 'Constitution of Business',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:proprietorship',
-                        'options' => [
-                            'proprietorship' => 'Proprietorship',
-                        ],
-                    ],
-                    [
-                        'name' => 'business_commencement_date',
-                        'label' => 'Business Commencement Date',
-                        'type' => 'date',
-                        'required' => true,
-                        'validation' => 'required|date',
-                    ],
-                    [
-                        'name' => 'business_address',
-                        'label' => 'Principal Place of Business Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'type_of_property',
-                        'label' => 'Type of Business Property',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:own,rented,leased',
-                        'options' => [
-                            'own' => 'Own',
-                            'rented' => 'Rented',
-                            'leased' => 'Leased',
-                        ],
-                    ],
-                    [
-                        'name' => 'nature_of_business_activity',
-                        'label' => 'Nature of Business Activities',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'bank_details' => [
-                'label' => 'Bank Details',
-                'fields' => [
-                    [
-                        'name' => 'bank_account_number',
-                        'label' => 'Bank Account Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'ifsc_code',
-                        'label' => 'IFSC Code',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'pan_card',
-                'label' => 'PAN Card Copy',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'aadhaar_card',
-                'label' => 'Aadhaar Card Copy',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo',
-                'label' => 'Passport Size Photograph',
-                'required' => true,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'address_proof',
-                'label' => 'Address Proof (Electricity Bill / Rent Agreement / Property Tax Receipt)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'cancelled_cheque',
-                'label' => 'Cancelled Cheque / Bank Passbook Copy',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-        ],
-    ],
-    'gst-return-filing' => [
-        'label' => '',
-        'sections' => [
-            'basic_details' => [
-                'label' => 'Basic Details',
-                'fields' => [
-                    [
-                        'name' => 'pan_number',
-                        'label' => 'PAN',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|size:10|regex:/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/',
-                    ],
-                    [
-                        'name' => 'mobile',
-                        'label' => 'Mobile Number (Client)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'contact_person',
-                        'label' => 'Contact Person Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'email',
-                        'label' => 'Email Id',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-            'business_details' => [
-                'label' => 'Business Details',
-                'fields' => [
-                    [
-                        'name' => 'firm_name',
-                        'label' => 'Firm Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'gst_number',
-                        'label' => 'GST Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|size:15|regex:/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[A-Z1-9]{1}Z[0-9A-Z]{1}$/',
-                    ],
-                    [
-                        'name' => 'gst_portal_login_id',
-                        'label' => 'GST User Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                    [
-                        'name' => 'gst_portal_password',
-                        'label' => 'GST  Password',
-                        'type' => 'password',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                ],
-            ],
-            'return_details' => [
-                'label' => 'Return Filing Details',
-                'fields' => [
-                    [
-                        'name' => 'financial_year',
-                        'label' => 'Financial Year',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            '2017-18' => '2017-18',
-                            '2018-19' => '2018-19',
-                            '2019-20' => '2019-20',
-                            '2020-21' => '2020-21',
-                            '2021-22' => '2021-22',
-                            '2022-23' => '2022-23',
-                            '2023-24' => '2023-24',
-                            '2024-25' => '2024-25',
-                            '2025-26' => '2025-26',
-                            '2026-27' => '2026-27',
-                            '2027-28' => '2027-28',
-                            '2028-29' => '2028-29',
-                        ],
-                    ],
-                    [
-                        'name' => 'gst_type',
-                        'label' => 'GST Type',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            'regular' => 'Regular',
-                            'composition' => 'Composition',
-                        ],
-                    ],
-                    [
-                        'name' => 'annual_turnover_range',
-                        'label' => 'Annual Turnover Range',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            'nil' => 'Nil',
-                            'upto_35' => 'Upto 35 Bills (Regular1)',
-                            'above_35' => 'Above 35 Bills (Regular2)',
-                            'nil_turnover' => 'Nil Turnover',
-                            'with_turnover' => 'With Turnover',
-                        ],
-                    ],
-                    [
-                        'name' => 'frequency_of_return',
-                        'label' => 'Frequency of Return',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string',
-                        'options' => [
-                            'monthly' => 'Monthly',
-                            'quarterly' => 'Quarterly',
-                            'annual' => 'Annual GSTR9 (T/O above 2cr)',
-                            'annual_gstr4' => 'Annual GSTR4',
-                        ],
-                    ],
-                    [
-                        'name' => 'plan',
-                        'label' => 'Plan Options',
-                        'type' => 'select',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                        'options' => [
-                            'one_time' => 'One Time',
-                            'yearly_12' => 'Yearly (12 Filings/Year)',
-                            'yearly_4' => 'Yearly (4 Filings/Year)',
-                        ],
-                    ],
-                    [
-                        'name' => 'month',
-                        'label' => 'Select Month',
-                        'type' => 'select',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                        'options' => [
-                            'april' => 'April',
-                            'may' => 'May',
-                            'june' => 'June',
-                            'july' => 'July',
-                            'august' => 'August',
-                            'september' => 'September',
-                            'october' => 'October',
-                            'november' => 'November',
-                            'december' => 'December',
-                            'january' => 'January',
-                            'february' => 'February',
-                            'march' => 'March',
-                        ],
-                    ],
-                    [
-                        'name' => 'quarter',
-                        'label' => 'Quarter',
-                        'type' => 'select',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                        'options' => [
-                            'q1' => 'April - June',
-                            'q2' => 'July - Sep',
-                            'q3' => 'Oct - Dec',
-                            'q4' => 'Jan - March',
-                        ],
-                    ],
-                    [
-                        'name' => 'remarks',
-                        'label' => 'Remarks',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:1000',
-                    ],
-                ],
-            ],
-            'additional_information' => [
-                'label' => 'Additional Information',
-                'fields' => [
-                    [
-                        'name' => 'remarks',
-                        'label' => 'Remarks',
-                        'type' => 'textarea',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'required_documents',
-                'label' => 'Attach files (pdf, jpeg, excel, zip, doc)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'jpeg',
-                    'png',
-                    'xls',
-                    'xlsx',
-                    'zip',
-                    'doc',
-                    'docx',
-                ],
-            ],
-        ],
-    ],
-    'private-limited-company-registration' => [
-        'label' => '',
-        'sections' => [
-            'company_details' => [
-                'label' => 'Company Details',
-                'fields' => [
-                    [
-                        'name' => 'proposed_company_name',
-                        'label' => 'Proposed Company Name (Up to 2-3 options)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'main_object',
-                        'label' => 'Main Object / Business Activity',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'authorized_capital',
-                        'label' => 'Authorized Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:100000',
-                    ],
-                    [
-                        'name' => 'paidup_capital',
-                        'label' => 'Paid-up Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:1',
-                    ],
-                    [
-                        'name' => 'registered_office_address',
-                        'label' => 'Registered Office Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'director_details' => [
-                'label' => 'Director Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_directors',
-                        'label' => 'Number of Directors (Minimum 2)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:2',
-                    ],
-                    [
-                        'name' => 'resident_director',
-                        'label' => 'At least one Director Resident in India?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                    [
-                        'name' => 'director_din_available',
-                        'label' => 'Do Directors Have DIN?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                ],
-            ],
-            'shareholding_details' => [
-                'label' => 'Shareholding Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_shareholders',
-                        'label' => 'Number of Shareholders',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:1',
-                    ],
-                    [
-                        'name' => 'shareholding_pattern',
-                        'label' => 'Shareholding Pattern (Describe % distribution)',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'contact_details' => [
-                'label' => 'Contact Details',
-                'fields' => [
-                    [
-                        'name' => 'contact_person',
-                        'label' => 'Contact Person Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile',
-                        'label' => 'Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email',
-                        'label' => 'Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'director_pan',
-                'label' => 'PAN Card of Directors',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'director_address_proof',
-                'label' => 'Address Proof of Directors',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo',
-                'label' => 'Passport Size Photograph of Directors',
-                'required' => true,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'registered_office_proof',
-                'label' => 'Registered Office Address Proof (Electricity Bill / Rent Agreement)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'noc_from_owner',
-                'label' => 'NOC from Property Owner (If Rented)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'moa_draft',
-                'label' => 'Draft MOA',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'aoa_draft',
-                'label' => 'Draft AOA',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-        ],
-    ],
-    'partnership-firm-registration' => [
-        'label' => '',
-        'sections' => [
-            'firm_details' => [
-                'label' => 'Firm Details',
-                'fields' => [
-                    [
-                        'name' => 'firm_name',
-                        'label' => 'Proposed Firm Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'nature_of_business',
-                        'label' => 'Nature of Business Activity',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'business_commencement_date',
-                        'label' => 'Date of Commencement of Business',
-                        'type' => 'date',
-                        'required' => true,
-                        'validation' => 'required|date',
-                    ],
-                    [
-                        'name' => 'principal_place_of_business',
-                        'label' => 'Principal Place of Business Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'partner_details' => [
-                'label' => 'Partner Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_partners',
-                        'label' => 'Number of Partners (Max 4)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:2|max:4',
-                    ],
-                    [
-                        'name' => 'profit_sharing_ratio',
-                        'label' => 'Profit Sharing Ratio (%)',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                ],
-            ],
-            'contact_details' => [
-                'label' => 'Contact Details',
-                'fields' => [
-                    [
-                        'name' => 'contact_person_1',
-                        'label' => 'Partner 1: Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile_1',
-                        'label' => 'Partner 1: Mobile',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email_1',
-                        'label' => 'Partner 1: Email',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                    [
-                        'name' => 'contact_person_2',
-                        'label' => 'Partner 2: Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile_2',
-                        'label' => 'Partner 2: Mobile',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email_2',
-                        'label' => 'Partner 2: Email',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                    [
-                        'name' => 'contact_person_3',
-                        'label' => 'Partner 3: Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile_3',
-                        'label' => 'Partner 3: Mobile',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|digits:10',
-                    ],
-                    [
-                        'name' => 'email_3',
-                        'label' => 'Partner 3: Email',
-                        'type' => 'email',
-                        'required' => false,
-                        'validation' => 'nullable|email',
-                    ],
-                    [
-                        'name' => 'contact_person_4',
-                        'label' => 'Partner 4: Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile_4',
-                        'label' => 'Partner 4: Mobile',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|digits:10',
-                    ],
-                    [
-                        'name' => 'email_4',
-                        'label' => 'Partner 4: Email',
-                        'type' => 'email',
-                        'required' => false,
-                        'validation' => 'nullable|email',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'business_address_proof',
-                'label' => 'Business Address Proof (Electricity Bill / Rent Agreement)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'noc_from_owner',
-                'label' => 'NOC from Property Owner (If Rented)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'partnership_deed_draft',
-                'label' => 'Draft Partnership Deed',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'partner_pan_1',
-                'label' => 'Partner 1: PAN Card',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'partner_address_proof_1',
-                'label' => 'Partner 1: Address Proof',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo_1',
-                'label' => 'Partner 1: Passport Photo',
-                'required' => true,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'partner_pan_2',
-                'label' => 'Partner 2: PAN Card',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'partner_address_proof_2',
-                'label' => 'Partner 2: Address Proof',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo_2',
-                'label' => 'Partner 2: Passport Photo',
-                'required' => true,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'partner_pan_3',
-                'label' => 'Partner 3: PAN Card',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'partner_address_proof_3',
-                'label' => 'Partner 3: Address Proof',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo_3',
-                'label' => 'Partner 3: Passport Photo',
-                'required' => false,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'partner_pan_4',
-                'label' => 'Partner 4: PAN Card',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'partner_address_proof_4',
-                'label' => 'Partner 4: Address Proof',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo_4',
-                'label' => 'Partner 4: Passport Photo',
-                'required' => false,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-        ],
-    ],
-    'msme-udyam-registration' => [
-        'label' => '',
-        'sections' => [
-            'aadhaar_details' => [
-                'label' => 'Aadhaar & Applicant Details',
-                'fields' => [
-                    [
-                        'name' => 'aadhaar_number',
-                        'label' => 'Aadhaar Number (Of Proprietor / Managing Partner / Director)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:12',
-                    ],
-                    [
-                        'name' => 'applicant_name',
-                        'label' => 'Name as per Aadhaar',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile',
-                        'label' => 'Mobile Number (Linked with Aadhaar)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email',
-                        'label' => 'Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-            'enterprise_details' => [
-                'label' => 'Enterprise Details',
-                'fields' => [
-                    [
-                        'name' => 'organisation_type',
-                        'label' => 'Type of Organisation',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:proprietorship,partnership,private_limited,public_limited,llp,huf,society,trust,other',
-                        'options' => [
-                            'proprietorship' => 'Proprietorship',
-                            'partnership' => 'Partnership',
-                            'private_limited' => 'Private Limited Company',
-                            'public_limited' => 'Public Limited Company',
-                            'llp' => 'LLP',
-                            'huf' => 'HUF',
-                            'society' => 'Society',
-                            'trust' => 'Trust',
-                            'other' => 'Other',
-                        ],
-                    ],
-                    [
-                        'name' => 'enterprise_name',
-                        'label' => 'Name of Enterprise / Business',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'pan_number',
-                        'label' => 'PAN of Enterprise',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|size:10|regex:/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/',
-                    ],
-                    [
-                        'name' => 'gst_number',
-                        'label' => 'GSTIN (If Available)',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|size:15|regex:/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[A-Z1-9]{1}Z[0-9A-Z]{1}$/',
-                    ],
-                    [
-                        'name' => 'business_address',
-                        'label' => 'Business Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'business_activity_details' => [
-                'label' => 'Business Activity Details',
-                'fields' => [
-                    [
-                        'name' => 'major_activity',
-                        'label' => 'Major Activity',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:manufacturing,services',
-                        'options' => [
-                            'manufacturing' => 'Manufacturing',
-                            'services' => 'Services',
-                        ],
-                    ],
-                    [
-                        'name' => 'nic_code',
-                        'label' => 'NIC Code (If Known)',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:10',
-                    ],
-                    [
-                        'name' => 'number_of_employees',
-                        'label' => 'Number of Employees',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:0',
-                    ],
-                    [
-                        'name' => 'investment_amount',
-                        'label' => 'Investment in Plant & Machinery / Equipment (₹)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'annual_turnover',
-                        'label' => 'Annual Turnover (₹)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                ],
-            ],
-            'bank_details' => [
-                'label' => 'Bank Details',
-                'fields' => [
-                    [
-                        'name' => 'bank_account_number',
-                        'label' => 'Bank Account Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'ifsc_code',
-                        'label' => 'IFSC Code',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'aadhaar_card',
-                'label' => 'Aadhaar Card Copy',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'pan_card',
-                'label' => 'PAN Card Copy',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'gst_certificate',
-                'label' => 'GST Certificate (If Applicable)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'bank_proof',
-                'label' => 'Cancelled Cheque / Bank Passbook Copy',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-        ],
-    ],
-    'ngo-trust-registration-1' => [
-        'label' => '',
-        'sections' => [
-            'company_details' => [
-                'label' => 'Proposed Company Details',
-                'fields' => [
-                    [
-                        'name' => 'proposed_company_name',
-                        'label' => 'Proposed Company Name (Up to 6 options)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'company_object',
-                        'label' => 'Main Object / Purpose of the Company',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'authorized_capital',
-                        'label' => 'Proposed Authorised Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'paidup_capital',
-                        'label' => 'Proposed Paid-up Share Capital',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'registered_office_address',
-                        'label' => 'Registered Office Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'director_details' => [
-                'label' => 'Director Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_directors',
-                        'label' => 'Number of Directors (Minimum 2)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:2',
-                    ],
-                    [
-                        'name' => 'resident_director',
-                        'label' => 'Is at least one Director Resident in India?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                ],
-            ],
-            'contact_details' => [
-                'label' => 'Contact Details',
-                'fields' => [
-                    [
-                        'name' => 'contact_mobile',
-                        'label' => 'Contact Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'contact_email',
-                        'label' => 'Contact Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'director_pan',
-                'label' => 'Director PAN Card (Self Attested)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'director_address_proof',
-                'label' => 'Director Address Proof (Self Attested)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo',
-                'label' => 'Passport Size Photo of Directors',
-                'required' => true,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'office_address_proof',
-                'label' => 'Registered Office Address Proof (Utility Bill / Rent Agreement)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'noc_from_owner',
-                'label' => 'NOC from Property Owner (If Rented)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'moa_draft',
-                'label' => 'Draft Memorandum of Association (MOA)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'aoa_draft',
-                'label' => 'Draft Articles of Association (AOA)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-        ],
-    ],
-    'section-8-registration' => [
-        'label' => '',
-        'sections' => [
-            'basic_details' => [
-                'label' => 'Basic Organisation Details',
-                'fields' => [
-                    [
-                        'name' => 'registration_type',
-                        'label' => 'Select Registration Type',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:trust,society,section8',
-                        'options' => [
-                            'trust' => 'Trust',
-                            'society' => 'Society',
-                            'section8' => 'Section 8 Company',
-                        ],
-                    ],
-                    [
-                        'name' => 'proposed_name',
-                        'label' => 'Proposed Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'registered_address',
-                        'label' => 'Registered Office Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'main_objectives',
-                        'label' => 'Main Objectives / Activities',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'governing_body_details' => [
-                'label' => 'Governing Body / Trustees / Directors',
-                'fields' => [
-                    [
-                        'name' => 'number_of_members',
-                        'label' => 'Number of Trustees / Members / Directors',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:2',
-                    ],
-                    [
-                        'name' => 'settlor_name',
-                        'label' => 'Settlor Name (For Trust Only)',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'resident_director',
-                        'label' => 'At least one Director Resident in India? (For Section 8)',
-                        'type' => 'select',
-                        'required' => false,
-                        'validation' => 'nullable|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                ],
-            ],
-            'capital_details' => [
-                'label' => 'Capital Details (Applicable for Section 8 Company)',
-                'fields' => [
-                    [
-                        'name' => 'authorized_capital',
-                        'label' => 'Authorized Capital',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'paidup_capital',
-                        'label' => 'Paid-up Capital',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                ],
-            ],
-            'contact_details' => [
-                'label' => 'Contact Details',
-                'fields' => [
-                    [
-                        'name' => 'contact_person',
-                        'label' => 'Contact Person Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile',
-                        'label' => 'Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email',
-                        'label' => 'Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'id_proof_members',
-                'label' => 'ID Proof of Trustees / Members / Directors',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'address_proof_members',
-                'label' => 'Address Proof of Trustees / Members / Directors',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'registered_address_proof',
-                'label' => 'Registered Office Address Proof',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'trust_deed_or_moa',
-                'label' => 'Draft Trust Deed / MOA / AOA (As Applicable)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-        ],
-    ],
-    'llp-registation' => [
-        'label' => '',
-        'sections' => [
-            'company_details' => [
-                'label' => 'Company Details',
-                'fields' => [
-                    [
-                        'name' => 'proposed_company_name',
-                        'label' => 'Proposed Company Name (Up to 2-3 options)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'main_object',
-                        'label' => 'Main Object / Business Activity',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'authorized_capital',
-                        'label' => 'Authorized Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:100000',
-                    ],
-                    [
-                        'name' => 'paidup_capital',
-                        'label' => 'Paid-up Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:1',
-                    ],
-                    [
-                        'name' => 'registered_office_address',
-                        'label' => 'Registered Office Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'director_details' => [
-                'label' => 'Director Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_directors',
-                        'label' => 'Number of Directors (Minimum 2)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:2',
-                    ],
-                    [
-                        'name' => 'resident_director',
-                        'label' => 'At least one Director Resident in India?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                    [
-                        'name' => 'director_din_available',
-                        'label' => 'Do Directors Have DIN?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                ],
-            ],
-            'shareholding_details' => [
-                'label' => 'Shareholding Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_shareholders',
-                        'label' => 'Number of Shareholders',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:1',
-                    ],
-                    [
-                        'name' => 'shareholding_pattern',
-                        'label' => 'Shareholding Pattern (Describe % distribution)',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'contact_details' => [
-                'label' => 'Contact Details',
-                'fields' => [
-                    [
-                        'name' => 'contact_person',
-                        'label' => 'Contact Person Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile',
-                        'label' => 'Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email',
-                        'label' => 'Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'director_pan',
-                'label' => 'PAN Card of Directors',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'director_address_proof',
-                'label' => 'Address Proof of Directors',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo',
-                'label' => 'Passport Size Photograph of Directors',
-                'required' => true,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'registered_office_proof',
-                'label' => 'Registered Office Address Proof (Electricity Bill / Rent Agreement)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'noc_from_owner',
-                'label' => 'NOC from Property Owner (If Rented)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'moa_draft',
-                'label' => 'Draft MOA',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'aoa_draft',
-                'label' => 'Draft AOA',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-        ],
-    ],
-    'opc-registation' => [
-        'label' => '',
-        'sections' => [
-            'company_details' => [
-                'label' => 'Company Details',
-                'fields' => [
-                    [
-                        'name' => 'proposed_company_name',
-                        'label' => 'Proposed Company Name (Up to 2-3 options)',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'main_object',
-                        'label' => 'Main Object / Business Activity',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'authorized_capital',
-                        'label' => 'Authorized Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:100000',
-                    ],
-                    [
-                        'name' => 'paidup_capital',
-                        'label' => 'Paid-up Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:1',
-                    ],
-                    [
-                        'name' => 'registered_office_address',
-                        'label' => 'Registered Office Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'state',
-                        'label' => 'State',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'district',
-                        'label' => 'District',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'director_details' => [
-                'label' => 'Director Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_directors',
-                        'label' => 'Number of Directors (Minimum 2)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:2',
-                    ],
-                    [
-                        'name' => 'resident_director',
-                        'label' => 'At least one Director Resident in India?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                    [
-                        'name' => 'director_din_available',
-                        'label' => 'Do Directors Have DIN?',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                ],
-            ],
-            'shareholding_details' => [
-                'label' => 'Shareholding Details',
-                'fields' => [
-                    [
-                        'name' => 'number_of_shareholders',
-                        'label' => 'Number of Shareholders',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|integer|min:1',
-                    ],
-                    [
-                        'name' => 'shareholding_pattern',
-                        'label' => 'Shareholding Pattern (Describe % distribution)',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'contact_details' => [
-                'label' => 'Contact Details',
-                'fields' => [
-                    [
-                        'name' => 'contact_person',
-                        'label' => 'Contact Person Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'mobile',
-                        'label' => 'Mobile Number',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|digits:10',
-                    ],
-                    [
-                        'name' => 'email',
-                        'label' => 'Email Address',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => 'required|email',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'director_pan',
-                'label' => 'PAN Card of Directors',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'director_address_proof',
-                'label' => 'Address Proof of Directors',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'passport_photo',
-                'label' => 'Passport Size Photograph of Directors',
-                'required' => true,
-                'mimes' => [
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'registered_office_proof',
-                'label' => 'Registered Office Address Proof (Electricity Bill / Rent Agreement)',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'noc_from_owner',
-                'label' => 'NOC from Property Owner (If Rented)',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'moa_draft',
-                'label' => 'Draft MOA',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-            [
-                'name' => 'aoa_draft',
-                'label' => 'Draft AOA',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                ],
-            ],
-        ],
-    ],
-    'project-report' => [
-        'label' => '',
-        'sections' => [
-            'company_details' => [
-                'label' => 'Company Details',
-                'fields' => [
-                    [
-                        'name' => 'proposed_company_name',
-                        'label' => 'Proposed Company Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'type_of_company',
-                        'label' => 'Type of Company (Private Limited)',
-                        'type' => 'select',
-                        'required' => true,
-                        'validation' => 'required|string|in:private_limited',
-                        'options' => [
-                            'private_limited' => 'Private Limited',
-                        ],
-                    ],
-                    [
-                        'name' => 'registered_office_address',
-                        'label' => 'Registered Office Address',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'promoter_director_1_name',
-                        'label' => 'Promoter / Director 1: Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'promoter_director_1_designation',
-                        'label' => 'Promoter / Director 1: Designation',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'promoter_director_1_mobile',
-                        'label' => 'Promoter / Director 1: Mobile Number',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|digits:10',
-                    ],
-                    [
-                        'name' => 'promoter_director_1_email',
-                        'label' => 'Promoter / Director 1: Email Address',
-                        'type' => 'email',
-                        'required' => false,
-                        'validation' => 'nullable|email',
-                    ],
-                    [
-                        'name' => 'promoter_director_2_name',
-                        'label' => 'Promoter / Director 2: Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'promoter_director_2_designation',
-                        'label' => 'Promoter / Director 2: Designation',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'promoter_director_2_mobile',
-                        'label' => 'Promoter / Director 2: Mobile Number',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|digits:10',
-                    ],
-                    [
-                        'name' => 'promoter_director_2_email',
-                        'label' => 'Promoter / Director 2: Email Address',
-                        'type' => 'email',
-                        'required' => false,
-                        'validation' => 'nullable|email',
-                    ],
-                    [
-                        'name' => 'promoter_director_3_name',
-                        'label' => 'Promoter / Director 3: Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'promoter_director_3_designation',
-                        'label' => 'Promoter / Director 3: Designation',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'promoter_director_3_mobile',
-                        'label' => 'Promoter / Director 3: Mobile Number',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|digits:10',
-                    ],
-                    [
-                        'name' => 'promoter_director_3_email',
-                        'label' => 'Promoter / Director 3: Email Address',
-                        'type' => 'email',
-                        'required' => false,
-                        'validation' => 'nullable|email',
-                    ],
-                    [
-                        'name' => 'promoter_director_4_name',
-                        'label' => 'Promoter / Director 4: Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'promoter_director_4_designation',
-                        'label' => 'Promoter / Director 4: Designation',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'promoter_director_4_mobile',
-                        'label' => 'Promoter / Director 4: Mobile Number',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|digits:10',
-                    ],
-                    [
-                        'name' => 'promoter_director_4_email',
-                        'label' => 'Promoter / Director 4: Email Address',
-                        'type' => 'email',
-                        'required' => false,
-                        'validation' => 'nullable|email',
-                    ],
-                    [
-                        'name' => 'shareholder_1_name',
-                        'label' => 'Shareholding Pattern: Shareholder 1 Name',
-                        'type' => 'text',
-                        'required' => true,
-                        'validation' => 'required|string|max:255',
-                    ],
-                    [
-                        'name' => 'shareholder_1_percentage',
-                        'label' => 'Shareholding Pattern: Shareholder 1 Percentage (%)',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0|max:100',
-                    ],
-                    [
-                        'name' => 'shareholder_2_name',
-                        'label' => 'Shareholding Pattern: Shareholder 2 Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'shareholder_2_percentage',
-                        'label' => 'Shareholding Pattern: Shareholder 2 Percentage (%)',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0|max:100',
-                    ],
-                    [
-                        'name' => 'shareholder_3_name',
-                        'label' => 'Shareholding Pattern: Shareholder 3 Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'shareholder_3_percentage',
-                        'label' => 'Shareholding Pattern: Shareholder 3 Percentage (%)',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0|max:100',
-                    ],
-                    [
-                        'name' => 'shareholder_4_name',
-                        'label' => 'Shareholding Pattern: Shareholder 4 Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'shareholder_4_percentage',
-                        'label' => 'Shareholding Pattern: Shareholder 4 Percentage (%)',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0|max:100',
-                    ],
-                    [
-                        'name' => 'shareholder_5_name',
-                        'label' => 'Shareholding Pattern: Shareholder 5 Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'shareholder_5_percentage',
-                        'label' => 'Shareholding Pattern: Shareholder 5 Percentage (%)',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0|max:100',
-                    ],
-                    [
-                        'name' => 'shareholder_6_name',
-                        'label' => 'Shareholding Pattern: Shareholder 6 Name',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => 'nullable|string|max:255',
-                    ],
-                    [
-                        'name' => 'shareholder_6_percentage',
-                        'label' => 'Shareholding Pattern: Shareholder 6 Percentage (%)',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0|max:100',
-                    ],
-                    [
-                        'name' => 'authorized_capital',
-                        'label' => 'Authorized Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'paidup_capital',
-                        'label' => 'Paid-up Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                ],
-            ],
-            'business_plan' => [
-                'label' => 'Business Plan',
-                'fields' => [
-                    [
-                        'name' => 'nature_of_business_activities',
-                        'label' => 'Nature of Business Activities',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'business_objectives',
-                        'label' => 'Business Objectives',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'market_analysis',
-                        'label' => 'Market Analysis',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'revenue_model',
-                        'label' => 'Revenue Model',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'financial_projections' => [
-                'label' => 'Financial Projections',
-                'fields' => [
-                    [
-                        'name' => 'estimated_setup_cost',
-                        'label' => 'Estimated Setup Cost',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'projected_profit_loss_statement',
-                        'label' => 'Projected Profit & Loss Statement',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'projected_balance_sheet',
-                        'label' => 'Projected Balance Sheet',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'cash_flow_projections',
-                        'label' => 'Cash Flow Projections',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'funding_requirement',
-                        'label' => 'Funding Requirement',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'source_of_funds',
-                        'label' => 'Source of Funds',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-            'risk_and_growth' => [
-                'label' => 'Risk & Growth',
-                'fields' => [
-                    [
-                        'name' => 'statutory_registrations_required',
-                        'label' => 'Statutory Registrations Required',
-                        'type' => 'textarea',
-                        'required' => false,
-                        'validation' => 'nullable|string',
-                    ],
-                    [
-                        'name' => 'risk_analysis',
-                        'label' => 'Risk Analysis',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                    [
-                        'name' => 'future_growth_plan',
-                        'label' => 'Future Growth Plan',
-                        'type' => 'textarea',
-                        'required' => true,
-                        'validation' => 'required|string',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
+@section('title', 'Application #' . $application->id . ' | EasyTax')
 
-        ],
-    ],
-    'balance-sheet' => [
-        'label' => '',
-        'sections' => [
-            'assets' => [
-                'label' => 'Assets',
-                'fields' => [
-                    [
-                        'name' => 'fixed_assets',
-                        'label' => 'Fixed Assets',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'current_assets',
-                        'label' => 'Current Assets',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'cash_bank_balance',
-                        'label' => 'Cash & Bank Balance',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'inventory_stock',
-                        'label' => 'Inventory / Stock',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'sundry_debtors_receivables',
-                        'label' => 'Sundry Debtors / Receivables',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'loans_advances',
-                        'label' => 'Loans & Advances',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'other_assets',
-                        'label' => 'Other Assets',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'total_assets',
-                        'label' => 'Total Assets (Auto Calculated)',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                ],
-            ],
-            'liabilities' => [
-                'label' => 'Liabilities',
-                'fields' => [
-                    [
-                        'name' => 'share_capital',
-                        'label' => 'Share Capital',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'reserves_surplus',
-                        'label' => 'Reserves & Surplus',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'secured_loans',
-                        'label' => 'Secured Loans',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'unsecured_loans',
-                        'label' => 'Unsecured Loans',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'sundry_creditors_payables',
-                        'label' => 'Sundry Creditors / Payables',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'outstanding_expenses',
-                        'label' => 'Outstanding Expenses',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'other_liabilities',
-                        'label' => 'Other Liabilities',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric|min:0',
-                    ],
-                    [
-                        'name' => 'total_liabilities',
-                        'label' => 'Total Liabilities (Auto Calculated)',
-                        'type' => 'number',
-                        'required' => false,
-                        'validation' => 'nullable|numeric|min:0',
-                    ],
-                ],
-            ],
-            'summary' => [
-                'label' => 'Summary',
-                'fields' => [
-                    [
-                        'name' => 'net_profit_loss',
-                        'label' => 'Net Profit / Loss',
-                        'type' => 'number',
-                        'required' => true,
-                        'validation' => 'required|numeric',
-                    ],
-                    [
-                        'name' => 'balance_sheet_total_match_status',
-                        'label' => 'Balance Sheet Total Match Status (Auto Calculated)',
-                        'type' => 'select',
-                        'required' => false,
-                        'validation' => 'nullable|string|in:yes,no',
-                        'options' => [
-                            'yes' => 'Yes',
-                            'no' => 'No',
-                        ],
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
+@section('content_header')
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-2 pt-2">
+        <div>
+            <a href="{{ route('agent.applications.index') }}"
+                class="text-muted text-sm font-weight-bold mb-2 d-inline-block transition-hover">
+                <i class="fas fa-arrow-left mr-1"></i> Back to Applications
+            </a>  
 
-        ],
-    ],
-    'test' => [
-        'label' => '',
-        'sections' => [
-            'section_1' => [
-                'label' => 'New Section',
-                'fields' => [
-                    [
-                        'name' => '',
-                        'label' => '',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => '',
-                    ],
-                    [
-                        'name' => '',
-                        'label' => '',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => '',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'pdf',
-                'label' => 'pdf',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-            [
-                'name' => 'png',
-                'label' => 'png',
-                'required' => true,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-        ],
-    ],
-    'testing' => [
-        'label' => '',
-        'sections' => [
-            'section_1' => [
-                'label' => 'New Section',
-                'fields' => [
-                    [
-                        'name' => 'testing_documentation',
-                        'label' => 'Testing',
-                        'type' => 'text',
-                        'required' => false,
-                        'validation' => '',
-                    ],
-                ],
-            ],
-            'section_2' => [
-                'label' => 'New Section',
-                'fields' => [
-                    [
-                        'name' => 'email_id',
-                        'label' => 'email',
-                        'type' => 'email',
-                        'required' => true,
-                        'validation' => '',
-                    ],
-                ],
-            ],
-        ],
-        'documents' => [
-            [
-                'name' => 'documentation',
-                'label' => 'Testing',
-                'required' => false,
-                'mimes' => [
-                    'pdf',
-                    'jpg',
-                    'png',
-                ],
-            ],
-        ],
-    ],
-    'gst-annual-package' => [
-        'label' => '',
-        'sections' => [
+            @php
+                $status = strtolower($application->status->value ?? 'unknown');
 
-        ],
-        'documents' => [
+                $statusClass = match ($status) {
+                    'completed' => 'badge-success-soft',
+                    'pending' => 'badge-warning-soft',
+                    'rejected' => 'badge-danger-soft',
+                    'cancelled' => 'badge-secondary-soft',
+                    default => 'badge-primary-soft',
+                };
+            @endphp
 
-        ],
-    ],
-];
+            <div class="d-flex align-items-center mt-1">
+                <h1 class="h3 font-weight-bold mb-0 text-dark">
+                    Application #{{ $application->id }}
+                </h1>
+                <span class="badge {{ $statusClass }} ml-3 px-3 py-2 text-uppercase"
+                    style="font-size: 0.75rem; letter-spacing: 0.5px;">
+                    {{ $application->status->value ?? 'UNKNOWN' }}
+                </span>
+            </div>
+
+            <p class="text-muted mt-2 mb-0 text-sm">
+                <i class="far fa-calendar-alt mr-1"></i>
+                Submitted on <span
+                    class="font-weight-bold">{{ optional($application->created_at)->format('F d, Y \a\t h:i A') }}</span>
+            </p>
+        </div>
+    </div>
+@stop
+
+@section('content')
+    <div class="row">
+
+        {{-- LEFT COLUMN --}}
+        <div class="col-lg-8">
+
+            {{-- QUICK STATS CARDS --}}
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 summary-card">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="icon-box bg-success-soft text-success mr-3">
+                                <i class="fas fa-wallet fa-lg"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-muted text-uppercase text-xs font-weight-bold mb-1">Total Amount</h6>
+                                <h4 class="mb-0 font-weight-bold text-dark">
+                                    ₹{{ number_format($application->amount ?? 0, 2) }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm h-100 summary-card">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="icon-box bg-primary-soft text-primary mr-3">
+                                <i class="fas fa-hand-holding-usd fa-lg"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-muted text-uppercase text-xs font-weight-bold mb-1">Commission</h6>
+                                <h4 class="mb-0 font-weight-bold text-dark">
+                                    ₹{{ number_format($application->commission_amount ?? 0, 2) }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @php $paymentStatus = strtolower($application->payment_status->value ?? 'pending'); @endphp
+                    <div class="card border-0 shadow-sm h-100 summary-card">
+                        <div class="card-body d-flex align-items-center">
+                            <div
+                                class="icon-box {{ $paymentStatus === 'paid' || $paymentStatus === 'success' ? 'bg-success-soft text-success' : 'bg-warning-soft text-warning' }} mr-3">
+                                <i
+                                    class="fas {{ $paymentStatus === 'paid' || $paymentStatus === 'success' ? 'fa-check-double' : 'fa-hourglass-half' }} fa-lg"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-muted text-uppercase text-xs font-weight-bold mb-1">Payment Status</h6>
+                                <h4 class="mb-0 font-weight-bold text-dark text-capitalize">{{ $paymentStatus }}</h4>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+
+            {{-- MAIN DETAILS CARD --}}
+            <div class="card border-0 shadow-sm mb-4 rounded-lg">
+                <div class="card-header bg-white py-3 border-bottom-0 d-flex justify-content-between align-items-center">
+                    <h3 class="card-title font-weight-bold text-dark mb-0">
+                        <i class="fas fa-file-invoice text-primary mr-2"></i>
+                        Core Details
+                    </h3>
+
+                    {{-- THE BUTTONS --}}
+                    <div class="d-flex gap-2">
+                        
+                       @php 
+                      
+                            $currentStatus = $application->status instanceof \App\Enums\ApplicationStatus 
+                                ? $application->status->value 
+                                : (is_string($application->status) ? $application->status : '');
+                                
+                            $paymentStr = $application->payment_status instanceof \App\Enums\PaymentStatus
+                                ? $application->payment_status->value
+                                : (is_string($application->payment_status) ? $application->payment_status : '');
+
+                            $isPaid = in_array(strtoupper($paymentStr), ['SUCCESS', 'PAID']);
+                            $confirmMsg = $isPaid 
+                                ? 'Are you sure you want to cancel? Since payment is already completed, you must contact the Admin for a refund. Do you want to proceed?' 
+                                : 'Are you sure you want to cancel this application?';
+                        @endphp
+
+                       {{-- 💳 RAZORPAY RETRY BUTTON --}}
+                       @if(in_array(strtoupper($paymentStr), ['FAILED', 'PENDING']) && strtoupper($currentStatus) !== 'CANCELLED')
+                            <form action="{{ route('applications.retryPayment', $application) }}" method="POST" class="mr-2">
+                                @csrf
+                                <button type="submit" class="btn btn-sm shadow-sm font-weight-bold text-white pulse-green" style="background-color: #1E9C5D; border-color: #1E9C5D;">
+                                    <i class="fas fa-credit-card mr-1"></i> Pay Now to Complete
+                                </button>
+                            </form>
+                        @endif
+                        @if (strtoupper($currentStatus) !== 'CANCELLED')
+                            <form id="cancelApplicationForm" action="{{ route('agent.applications.cancel', $application) }}" method="POST" class="mr-2">
+                                @csrf
+                                @method('PATCH')
+                                <button type="button" onclick="openCancelModal('{{ addslashes($confirmMsg) }}')" class="btn btn-sm btn-outline-danger shadow-sm font-weight-bold">
+                                    <i class="fas fa-times-circle mr-1"></i> Cancel Application
+                                </button>
+                            </form>
+                        @else
+                            <button type="button" class="btn btn-sm btn-light text-muted border shadow-sm font-weight-bold" disabled>
+                                <i class="fas fa-ban mr-1"></i> Cancelled
+                            </button>
+                        @endif
+
+                        <button onclick="window.print()" class="btn btn-sm btn-primary shadow-sm font-weight-bold">
+                            <i class="fas fa-print mr-1"></i> Print Summary
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-hover mb-0 detail-table">
+                        <tbody>
+                            <tr>
+                                <td class="text-muted text-uppercase text-xs font-weight-bold w-30 align-middle pl-4 border-top-0">
+                                    Service Required</td>
+                                <td class="font-weight-bold text-dark border-top-0">
+                                    {{ $application->service->name ?? 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted text-uppercase text-xs font-weight-bold w-30 align-middle pl-4">
+                                    Payment Reference</td>
+                                <td><code class="px-2 py-1 bg-light text-dark rounded border font-weight-bold">{{ $application->payment_reference ?? 'N/A' }}</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted text-uppercase text-xs font-weight-bold w-30 align-middle pl-4">
+                                    Application ID</td>
+                                <td><span class="text-muted font-weight-bold">#{{ $application->id }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {{-- DYNAMIC FORM DATA (SMART REPEATER GRID VIEW) --}}
+            <div class="card border-0 shadow-sm mb-4 rounded-lg elegant-border">
+                <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                    <h3 class="card-title font-weight-bold text-dark mb-0">
+                        <i class="fas fa-clipboard-list text-primary mr-2"></i>
+                        Client Information
+                    </h3>
+                    
+                    {{-- EXPORT BUTTON (For Admin View) --}}
+                    @if(isset($application) && !empty($application->form_data) && Route::has('admin.applications.exportSingle'))
+                        <a href="{{ route('admin.applications.exportSingle', $application->id) }}" class="btn btn-sm btn-outline-success font-weight-bold shadow-sm transition-hover">
+                            <i class="fas fa-file-excel mr-1"></i> Export to Excel
+                        </a>
+                    @endif
+                </div>
+
+                @php 
+                    $rawFormData = $application->form_data ?? [];
+                    // Remove sensitive internal fields
+                    $formData = array_filter($rawFormData, fn($key) => !in_array($key, ['admin_username', 'admin_password']), ARRAY_FILTER_USE_KEY); 
+                    
+                  // 🧠 SMART REPEATER ENGINE: Handles BOTH Arrays and Claude's Flat Numbered Format
+                    $regularData = [];
+                    $repeaterGroups = [];
+                    
+                    foreach($formData as $key => $value) {
+                        if (str_starts_with($key, 'director_') || str_starts_with($key, 'member_') || str_starts_with($key, 'partner_')) {
+                            
+                            if (is_array($value)) {
+                                // Format 1: Arrays (member_name => ['Alice', 'Bob'])
+                                $parts = explode('_', $key, 2);
+                                $prefix = $parts[0]; 
+                                $subField = $parts[1] ?? $key; 
+                                
+                                foreach($value as $index => $val) {
+                                    $repeaterGroups[$prefix][$index][$subField] = $val;
+                                }
+                            } else {
+                                // Format 2: Claude's Flat Numbered Format (member_1_name => 'Alice')
+                                // We use regex to automatically group '1' into Box 1, '2' into Box 2
+                                if (preg_match('/^([a-zA-Z]+)_(\d+)_(.+)$/', $key, $matches)) {
+                                    $prefix = $matches[1]; 
+                                    $index = (int)$matches[2] - 1; // Convert to 0-based array index
+                                    $subField = $matches[3]; 
+                                    
+                                    $repeaterGroups[$prefix][$index][$subField] = $value;
+                                } else {
+                                    $regularData[$key] = $value; // Fallback
+                                }
+                            }
+                        } else {
+                            $regularData[$key] = $value;
+                        }
+                    }
+                @endphp
+
+                <div class="card-body p-4 bg-light rounded-bottom">
+                    @if (count($formData))
+                        
+                        {{-- 1. NORMAL FLAT FIELDS --}}
+                        <div class="row">
+                            @foreach ($regularData as $field => $value)
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-white p-3 rounded-lg border shadow-sm h-100 data-box transition-hover">
+                                        <span class="d-block text-muted text-uppercase text-xs font-weight-bold mb-1">
+                                            {{ Str::title(str_replace('_', ' ', $field)) }}
+                                        </span>
+                                        <span class="text-dark font-weight-normal" style="word-break: break-word;">
+                                            @if (is_array($value))
+                                                {{ implode(', ', $value) }}
+                                            @elseif(is_bool($value))
+                                                <span class="badge {{ $value ? 'badge-success-soft' : 'badge-secondary-soft' }} px-2 py-1">
+                                                    {{ $value ? 'Yes' : 'No' }}
+                                                </span>
+                                            @elseif(empty($value))
+                                                <span class="text-muted font-italic">Not provided</span>
+                                            @else
+                                                {{ $value }}
+                                            @endif
+                                        </span>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        {{-- 2. THE MAGIC REPEATER BLOCKS (Directors, Members, etc.) --}}
+                        @if(!empty($repeaterGroups))
+                            @foreach($repeaterGroups as $groupName => $items)
+                                <div class="w-100 mt-4 mb-3 px-2">
+                                    <h5 class="font-weight-bold text-dark border-bottom pb-2">
+                                        <i class="fas fa-users text-primary mr-2"></i> {{ Str::title($groupName) }} Details
+                                    </h5>
+                                </div>
+                                
+                                <div class="row">
+                                    @foreach($items as $index => $itemFields)
+                                        <div class="col-12 mb-3">
+                                            <div class="bg-white p-3 rounded-lg shadow-sm" style="border: 1px solid #c8eadb; border-left: 4px solid var(--brand-green, #1E9C5D);">
+                                                <h6 class="font-weight-bold mb-3 text-uppercase" style="color: var(--brand-green, #1E9C5D); letter-spacing: 0.5px;">
+                                                    {{ Str::title($groupName) }} {{ $index + 1 }}
+                                                </h6>
+                                                <div class="row">
+                                                    @foreach($itemFields as $subField => $subVal)
+                                                        <div class="col-md-4 col-sm-6 mb-2">
+                                                            <span class="d-block text-muted text-uppercase text-xs font-weight-bold mb-1">
+                                                                {{ Str::title(str_replace('_', ' ', $subField)) }}
+                                                            </span>
+                                                            <span class="text-dark font-weight-bold" style="font-size: 0.95rem;">
+                                                                {{ $subVal ?: '—' }}
+                                                            </span>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        @endif
+
+                    @else
+                        <div class="text-center text-muted py-4">
+                            <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow-sm border" style="width: 70px; height: 70px;">
+                                <i class="fas fa-inbox fa-2x text-secondary opacity-50"></i>
+                            </div>
+                            <h6 class="font-weight-bold">No Client Data</h6>
+                            <p class="text-sm mb-0">No form data was captured for this application.</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+          {{-- DELIVERABLES & CREDENTIALS CARD (AGENT DISPLAY) --}}
+            @if(isset($application->form_data['admin_username']) || isset($application->form_data['admin_password']) || $application->getMedia('final_deliverables')->count())
+            <div class="card border-0 shadow-sm mb-4 rounded-lg">
+                <div class="card-header bg-white py-3 border-bottom">
+                    <h3 class="card-title font-weight-bold text-dark mb-0">
+                        <i class="fas fa-key text-primary mr-2"></i> Deliverables & Credentials
+                    </h3>
+                </div>
+                <div class="card-body p-4 bg-primary-soft rounded-bottom">
+                    <div class="row">
+                        @if(!empty($application->form_data['admin_username']))
+                        <div class="col-md-6 mb-3">
+                            <div class="bg-white p-3 rounded-lg border shadow-sm h-100 data-box transition-hover">
+                                <span class="d-block text-muted text-uppercase text-xs font-weight-bold mb-1">GST Username</span>
+                                <span class="text-dark font-weight-bold" style="font-size: 1.1rem; letter-spacing: 1px;">{{ $application->form_data['admin_username'] }}</span>
+                            </div>
+                        </div>
+                        @endif
+                        
+                        @if(!empty($application->form_data['admin_password']))
+                        <div class="col-md-6 mb-3">
+                            <div class="bg-white p-3 rounded-lg border shadow-sm h-100 data-box transition-hover">
+                                <span class="d-block text-muted text-uppercase text-xs font-weight-bold mb-1">GST Password</span>
+                                <span class="text-dark font-weight-bold" style="font-size: 1.1rem;">{{ $application->form_data['admin_password'] }}</span>
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+
+                    @if ($application->getMedia('final_deliverables')->count())
+                        <h6 class="font-weight-bold text-dark mt-2 mb-3">GST Certificate</h6>
+                        <div class="document-list">
+                            @foreach ($application->getMedia('final_deliverables') as $doc)
+                                <div class="document-item d-flex align-items-center p-3 mb-2 bg-white rounded-lg border shadow-sm">
+                                    <div class="document-icon bg-light rounded d-flex align-items-center justify-content-center mr-3" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-file-pdf text-danger fa-lg"></i>
+                                    </div>
+                                    <div class="document-info flex-grow-1">
+                                        <div class="text-dark font-weight-bold text-sm">{{ $doc->name }}</div>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="{{ route('agent.documents.view', $doc->id) }}" target="_blank" class="btn btn-sm btn-light border text-primary"><i class="fas fa-eye"></i> View</a>
+                                        <a href="{{ route('agent.documents.download', $doc->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Download</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            </div>
+            @endif
+
+        </div>
+
+        {{-- RIGHT COLUMN --}}
+        <div class="col-lg-4">
+
+ {{-- DOCUMENTS --}}
+            <div class="card border-0 shadow-sm rounded-lg">
+                <div class="card-header bg-white py-3 border-bottom text-center">
+                    <h3 class="card-title font-weight-bold text-dark w-100 float-none mb-0">
+                        <i class="fas fa-paperclip text-orange mr-2"></i>
+                        Attached Documents
+                    </h3>
+                </div>
+
+                <div class="card-body p-4">
+                    @php
+                        // Filter out 'final_deliverables' so GST Certificates don't show up twice
+                        $generalDocs = $application->media->where('collection_name', '!==', 'final_deliverables');
+                    @endphp
+
+                    @if ($generalDocs->count() > 0)
+                        <div class="document-list">
+                            @foreach ($generalDocs as $doc)
+                                <div class="document-item d-flex align-items-center p-3 mb-3 bg-white rounded-lg border shadow-sm transition-hover">
+
+                                    <div class="document-icon bg-light rounded d-flex align-items-center justify-content-center mr-3"
+                                        style="width: 45px; height: 45px; flex-shrink: 0;">
+                                        @php
+                                            $ext = strtolower(pathinfo($doc->file_name ?? '', PATHINFO_EXTENSION));
+                                            $icon = match ($ext) {
+                                                'pdf' => 'fa-file-pdf text-danger',
+                                                'jpg', 'jpeg', 'png' => 'fa-file-image text-primary',
+                                                'doc', 'docx' => 'fa-file-word text-info',
+                                                default => 'fa-file-alt text-secondary',
+                                            };
+                                        @endphp
+                                        <i class="fas {{ $icon }} fa-lg"></i>
+                                    </div>
+
+                                    <div class="document-info flex-grow-1 overflow-hidden pr-2">
+                                        <div class="text-dark font-weight-bold text-truncate text-sm mb-1" title="{{ $doc->name }}">
+                                            {{ $doc->custom_properties['label'] ?? $doc->name }}
+                                        </div>
+                                        <div class="text-muted text-xs text-uppercase font-weight-bold">
+                                            {{ strtoupper($ext) ?: 'FILE' }} • {{ number_format($doc->size / 1024, 1) }} KB
+                                            
+                                            {{-- Show which bucket it came from (e.g., partner_pan_1) --}}
+                                            @if($doc->collection_name !== 'documents' && $doc->collection_name !== 'default')
+                                                 • <span class="text-primary">{{ ucwords(str_replace('_', ' ', $doc->collection_name)) }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    {{-- SECURE VIEW AND DOWNLOAD BUTTONS --}}
+                                    <div class="d-flex flex-column flex-sm-row gap-2">
+                                        <a href="{{ route('agent.documents.view', $doc->id) }}" target="_blank"
+                                            class="btn btn-sm btn-light border text-primary shadow-sm px-2" title="View Document">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('agent.documents.download', $doc->id) }}"
+                                            class="btn btn-sm btn-primary shadow-sm px-2" title="Download Document">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="text-center py-4 text-muted">
+                            <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                                style="width: 60px; height: 60px;">
+                                <i class="fas fa-folder-open fa-2x text-secondary"></i>
+                            </div>
+                            <h6 class="font-weight-bold">No Documents</h6>
+                            <p class="text-sm mb-0">No files have been attached.</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            {{-- NOTICE --}}
+            <div class="card border-0 bg-primary-soft mt-4 rounded-lg">
+                <div class="card-body">
+                    <h5 class="font-weight-bold text-primary mb-2 text-sm text-uppercase">
+                        <i class="fas fa-info-circle mr-1"></i> Agent Note
+                    </h5>
+                    <p class="text-primary-dark mb-0 text-sm">
+                        Please verify all uploaded documents and submitted data carefully before marking this application as
+                        completed.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    {{-- CUSTOM CANCELLATION MODAL --}}
+    <div id="customCancelModal" class="custom-modal-backdrop" style="display: none;">
+        <div class="custom-modal-dialog shadow-lg">
+            <div class="custom-modal-content">
+                <div class="custom-modal-header bg-danger-soft">
+                    <h5 class="mb-0 text-danger font-weight-bold">
+                        <i class="fas fa-exclamation-triangle mr-2"></i> Confirm Cancellation
+                    </h5>
+                </div>
+                <div class="custom-modal-body p-4 text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-times-circle text-danger" style="font-size: 3rem; opacity: 0.8;"></i>
+                    </div>
+                    <p id="cancelModalMessage" class="mb-0 font-weight-bold text-dark" style="font-size: 1.1rem;"></p>
+                    <p class="text-muted text-sm mt-2">This action cannot be undone.</p>
+                </div>
+                <div class="custom-modal-footer">
+                    <button type="button" class="btn btn-light border font-weight-bold" onclick="closeCancelModal()">No, Go Back</button>
+                    <button type="button" class="btn btn-danger font-weight-bold shadow-sm" onclick="submitCancelForm()">Yes, Cancel It</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('css')
+    <style>
+        :root {
+            --brand-green: #1E9C5D;
+            --brand-green-soft: #EDF7F4;
+            --brand-slate: #2E3D4E;
+            --brand-slate-soft: #f8f9fa;
+        }
+
+        /* ── TYPOGRAPHY & UTILITIES ── */
+        .w-30 { width: 30%; }
+        .text-xs { font-size: 0.75rem; }
+        
+        .text-primary { color: var(--brand-green) !important; }
+        .text-primary-dark { color: #157a48 !important; } 
+
+        /* ── PREMIUM SOFT BACKGROUNDS ── */
+        .bg-primary-soft { background-color: var(--brand-green-soft) !important; }
+        .bg-success-soft { background-color: var(--brand-green-soft) !important; } 
+        .bg-warning-soft { background-color: #FEF3C7 !important; }
+        .bg-danger-soft  { background-color: #FEE2E2 !important; }
+        .bg-secondary-soft { background-color: #f1f3f4 !important; }
+
+        /* ── PREMIUM STATUS BADGES ── */
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.4rem 0.85rem !important;
+            border-radius: 6px;
+            border: none !important;
+        }
+        .badge-primary-soft, .badge-success-soft { 
+            background-color: var(--brand-green-soft); 
+            color: var(--brand-green); 
+        }
+        .badge-warning-soft { background-color: #FEF3C7; color: #D97706; }
+        .badge-danger-soft  { background-color: #FEE2E2; color: #DC2626; }
+        .badge-secondary-soft { background-color: #f1f3f4; color: #5f6368; }
+
+        /* ── PREMIUM CARDS & ICONS ── */
+        .card {
+            border-radius: 16px !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02) !important;
+            border: 1px solid #e8ecf0 !important;
+        }
+        .card-header {
+            border-bottom: 1px solid #e8ecf0 !important;
+            border-radius: 16px 16px 0 0 !important;
+        }
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── DETAIL TABLES ── */
+        .detail-table td {
+            padding: 1.25rem 1rem;
+            vertical-align: middle;
+            border-bottom: 1px solid #e8ecf0;
+            color: #4a5568;
+        }
+        .detail-table tr:last-child td { border-bottom: none; }
+
+        /* ── DATA BOXES ── */
+        .data-box {
+            border-left: 3px solid var(--brand-green) !important;
+            border-radius: 12px !important;
+        }
+
+        /* ── DOCUMENTS ── */
+        .document-item {
+            border-radius: 12px !important;
+            border: 1px solid #e8ecf0 !important;
+        }
+
+        /* ── HOVER TRANSITIONS ── */
+        .transition-hover { transition: all 0.2s ease-in-out; }
+        
+        .data-box:hover, .document-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06) !important;
+            border-color: #d1d5db !important;
+        }
+        .document-item:hover .document-action i { color: var(--brand-green); }
+        .transition-color { transition: color 0.2s ease-in-out; }
+
+        /* ── BUTTONS ── */
+        .btn-primary {
+            background-color: var(--brand-green);
+            border-color: var(--brand-green);
+            border-radius: 8px;
+        }
+        .btn-primary:hover {
+            background-color: #157a48;
+            border-color: #157a48;
+        }
+
+        /* ── CUSTOM MODAL ── */
+        .custom-modal-backdrop {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 1050;
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(3px); 
+        }
+        .custom-modal-dialog {
+            background: #fff; border-radius: 16px; width: 100%; max-width: 450px;
+            overflow: hidden; animation: popIn 0.3s ease-out forwards;
+            transform: scale(0.9); opacity: 0;
+        }
+        .custom-modal-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f3f4; }
+        .custom-modal-footer { padding: 1rem 1.5rem; background: #f8f9fa; display: flex; justify-content: center; gap: 12px; }
+        
+        @keyframes popIn {
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* ── PRINT OPTIMIZATION ── */
+        @media print {
+            .header-actions, .btn { display: none !important; }
+            .card { box-shadow: none !important; border: 1px solid #eee !important; }
+            .bg-primary-soft, .bg-light { background-color: transparent !important; }
+            body { background-color: #fff !important; }
+            .data-box { border: 1px solid #eee !important; page-break-inside: avoid; }
+        }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        .pulse-green { animation: pulse-green 2s infinite; }
+    </style>
+@stop
+
+@section('js')
+    <script>
+        // --- Custom Cancellation Modal Logic ---
+        function openCancelModal(message) {
+            document.getElementById('cancelModalMessage').innerText = message;
+            document.getElementById('customCancelModal').style.display = 'flex';
+        }
+
+        function closeCancelModal() {
+            document.getElementById('customCancelModal').style.display = 'none';
+        }
+
+        function submitCancelForm() {
+            event.target.disabled = true;
+            event.target.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Cancelling...';
+            document.getElementById('cancelApplicationForm').submit();
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('customCancelModal');
+            if (event.target == modal) {
+                closeCancelModal();
+            }
+        }
+
+       
+    </script>
+  {{-- --- RAZORPAY POPUP LOGIC --- --}}
+        @if(session('razorpay_order'))
+            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+            <script>
+                var options = {
+                    "key": "{{ session('razorpay_order.key_id') }}",
+                    "amount": "{{ session('razorpay_order.amount') }}",
+                    "currency": "{{ session('razorpay_order.currency') }}",
+                    "name": "EasyTax",
+                    "description": "Application Payment Retry",
+                    "order_id": "{{ session('razorpay_order.order_id') }}",
+                    "handler": function (response) {
+                        // 1. Create a hidden form when payment succeeds
+                        var form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = '{{ route('payment.success') }}';
+
+                        // 2. Add CSRF Token
+                        var csrfToken = document.createElement('input');
+                        csrfToken.type = 'hidden';
+                        csrfToken.name = '_token';
+                        csrfToken.value = '{{ csrf_token() }}';
+                        form.appendChild(csrfToken);
+
+                        // 3. Add Razorpay Verification Data
+                        var inputs = ['razorpay_payment_id', 'razorpay_order_id', 'razorpay_signature'];
+                        inputs.forEach(function(name) {
+                            var input = document.createElement('input');
+                            input.type = 'hidden';
+                            input.name = name;
+                            input.value = response[name];
+                            form.appendChild(input);
+                        });
+
+                        // 4. Add Application ID
+                        var appId = document.createElement('input');
+                        appId.type = 'hidden';
+                        appId.name = 'application_id';
+                        appId.value = '{{ session('razorpay_order.application_id') }}';
+                        form.appendChild(appId);
+
+                        // 5. Submit the form to your backend
+                        document.body.appendChild(form);
+                        form.submit();
+                    },
+                    "prefill": {
+                        "name": "{{ auth()->user()->name ?? 'Agent' }}",
+                        "email": "{{ auth()->user()->email ?? '' }}",
+                        "contact": "{{ auth()->user()->phone ?? '' }}"
+                    },
+                    "theme": {
+                        "color": "#1E9C5D"
+                    }
+                };
+                
+                // Launch the Razorpay Window
+                var rzp1 = new Razorpay(options);
+                rzp1.on('payment.failed', function (response){
+                    alert("Payment Failed: " + response.error.description);
+                });
+                rzp1.open();
+            </script>
+        @endif
+   
+@stopP
