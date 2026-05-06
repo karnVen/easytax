@@ -8,15 +8,15 @@
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%;background:#f0f4f8}
-  body{font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#4361EE 0%,#4361EE 45%,#e8edf5 45%)}
+  body{font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#daffe8 0%,#1D3E4E 45%,#e8edf5 45%)}
 
   /* ── WRAPPER ── */
   .dashboard{display:flex;width:1200px;height:720px;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.22)}
 
   /* ── SIDEBAR ── */
-  .sidebar{width:204px;min-width:204px;background:#4361EE;display:flex;flex-direction:column;position:relative;overflow:hidden}
-  .sidebar-logo{margin:22px 16px 18px;background:#fff;border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:9px}
-  .logo-icon{width:30px;height:30px;background:#4361EE;border-radius:8px;display:flex;align-items:center;justify-content:center}
+  .sidebar{width:204px;min-width:204px;background:#2C2C2C;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .sidebar-logo{margin:22px 16px 18px;background:#1D3E4E;border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:9px}
+  .logo-icon{width:30px;height:30px;background:#1D3E4E;border-radius:8px;display:flex;align-items:center;justify-content:center}
   .logo-icon svg{width:16px;height:16px;fill:#fff}
   .logo-text{font-size:14px;font-weight:700;color:#1e2d6b;letter-spacing:-.2px}
   .nav{padding:0 0 0 0;flex:1}
@@ -33,8 +33,8 @@
   .funnel-toggle::after{content:'';position:absolute;right:2px;top:2px;width:12px;height:12px;background:#fff;border-radius:50%}
   .sidebar-illo{margin-top:auto;padding:0 10px 0;display:flex;justify-content:center}
   .sidebar-illo svg{width:160px;opacity:.9}
-  .sidebar-cta{margin:10px 14px 18px;background:#3B82F6;border:none;border-radius:8px;color:#fff;font-family:inherit;font-size:11.5px;font-weight:700;letter-spacing:.6px;padding:10px;cursor:pointer;width:calc(100% - 28px);text-transform:uppercase}
-  .sidebar-cta:hover{background:#2563eb}
+  .sidebar-cta{margin:10px 14px 18px;background:#1D3E4E;border:none;border-radius:8px;color:#fff;font-family:inherit;font-size:11.5px;font-weight:700;letter-spacing:.6px;padding:10px;cursor:pointer;width:calc(100% - 28px);text-transform:uppercase}
+  .sidebar-cta:hover{background:#1D3E4E}
 
   /* ── MAIN ── */
   .main{flex:1;display:flex;flex-direction:column;background:#f5f7fb;overflow:hidden}
@@ -59,7 +59,7 @@
   .carousel-ctrl{display:flex;align-items:center;gap:5px}
   .cc-btn{width:26px;height:26px;border:1.5px solid #dde3ef;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:#8896b0;transition:.15s}
   .cc-btn:hover{background:#f0f4ff;border-color:#c4cfea}
-  .cc-dot{width:8px;height:8px;border-radius:50%;background:#4361EE;border:2px solid #4361EE}
+  .cc-dot{width:8px;height:8px;border-radius:50%;background:#1D3E4E;border:2px solid #1D3E4E}
 
   /* metric cards row */
   .metrics-row{display:flex;gap:12px;margin-bottom:22px;overflow:hidden}
@@ -78,7 +78,7 @@
 
   /* luxury product */
   .product-section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-  .view-all{font-size:12px;font-weight:600;color:#4361EE;display:flex;align-items:center;gap:3px;cursor:pointer}
+  .view-all{font-size:12px;font-weight:600;color:#1D3E4E;display:flex;align-items:center;gap:3px;cursor:pointer}
   .product-list{background:#fff;border:1px solid #eef0f5;border-radius:14px;overflow:hidden}
   .product-row{display:flex;align-items:center;padding:12px 16px;gap:14px;border-bottom:1px solid #f5f7fb;transition:.1s;cursor:pointer}
   .product-row:last-child{border-bottom:none}
@@ -100,10 +100,10 @@
   .right-panel{width:264px;min-width:264px;background:#fff;border-left:1px solid #eef0f5;display:flex;flex-direction:column;overflow-y:auto}
   .rp-topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 12px;border-bottom:1px solid #eef0f5;flex-shrink:0}
   .rp-title{font-size:14px;font-weight:700;color:#1a2340}
-  .insight-btn{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#4361EE;background:#EFF3FF;border:none;border-radius:20px;padding:5px 10px;cursor:pointer;font-family:inherit}
+  .insight-btn{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#1D3E4E;background:#EFF3FF;border:none;border-radius:20px;padding:5px 10px;cursor:pointer;font-family:inherit}
 
   /* live card */
-  .live-card{margin:12px;background:#4361EE;border-radius:14px;padding:14px;position:relative;overflow:hidden}
+  .live-card{margin:12px;background:#1D3E4E;border-radius:14px;padding:14px;position:relative;overflow:hidden}
   .live-card::after{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.08)}
   .live-expand{position:absolute;top:10px;right:10px;width:20px;height:20px;background:rgba(255,255,255,.2);border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:10px}
   .live-label{font-size:10.5px;color:rgba(255,255,255,.75);font-weight:500;margin-bottom:4px;text-transform:none}
@@ -122,7 +122,7 @@
   .ic-body{font-size:12px;color:#64748b;line-height:1.55}
   .ic-body strong{color:#1a2340;font-weight:700}
   .ic-links{display:flex;gap:0;margin-top:10px}
-  .ic-link{font-size:10.5px;font-weight:700;color:#4361EE;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:2px;padding:4px 10px;border:1px solid #dde3ef;background:#fff;border-radius:20px;margin-right:6px}
+  .ic-link{font-size:10.5px;font-weight:700;color:#1D3E4E;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:2px;padding:4px 10px;border:1px solid #dde3ef;background:#fff;border-radius:20px;margin-right:6px}
   .ic-link:hover{background:#EFF3FF}
 
   /* revenue */
@@ -147,12 +147,11 @@
 
   <!-- ══════════ SIDEBAR ══════════ -->
   <aside class="sidebar">
-    <div class="sidebar-logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 16 16"><path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 2.5c1.38 0 2.5 1.12 2.5 2.5S9.38 8.5 8 8.5 5.5 7.38 5.5 6 6.62 3.5 8 3.5zM8 13c-1.75 0-3.29-.9-4.2-2.26C3.82 9.62 5.8 8.75 8 8.75s4.18.87 4.2 1.99C11.29 12.1 9.75 13 8 13z"/></svg>
-      </div>
-      <span class="logo-text">Commercehq</span>
-    </div>
+ <div class="sidebar-logo" style="padding:8px 10px;">
+  <img src="logo11.png" 
+       alt="Easy Tax Logo" 
+       style="width:100%; height:auto; display:block; border-radius:6px;">
+</div>
 
     <nav class="nav">
       <div class="nav-item">
@@ -161,70 +160,29 @@
       </div>
       <div class="nav-item">
         <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><path d="M3 3h12v4H3zM3 9h5v6H3zM10 9h5v6h-5z"/></svg>
-        <span class="nav-label">Products</span>
+        <span class="nav-label">New Application</span>
       </div>
-      <div class="nav-item active">
-        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 4h12M5 8h8M7 12h4"/></svg>
-        <span class="nav-label">Funnels</span>
-        <div class="funnel-toggle"></div>
-      </div>
-      <div class="nav-item">
-        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><path d="M2 4h14v10a1 1 0 01-1 1H3a1 1 0 01-1-1V4z"/><path d="M2 4l7 6 7-6"/></svg>
-        <span class="nav-label">Orders</span>
-      </div>
+      
+     
       <div class="nav-item">
         <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="10" y="2" width="6" height="6" rx="1"/><rect x="2" y="10" width="6" height="6" rx="1"/><rect x="10" y="10" width="6" height="6" rx="1"/></svg>
-        <span class="nav-label">Membership</span>
+        <span class="nav-label">More Application</span>
       </div>
       <div class="nav-item">
         <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><path d="M4 2h10a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M6 6h6M6 9h6M6 12h4"/></svg>
-        <span class="nav-label">Conetent Area</span>
+        <span class="nav-label">My Application</span>
       </div>
-      <div class="nav-item">
-        <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5"><circle cx="9" cy="9" r="2.5"/><path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.22 3.22l1.41 1.41M13.36 13.36l1.41 1.41M3.22 14.78l1.41-1.41M13.36 4.64l1.41-1.41"/></svg>
-        <span class="nav-label">Settings</span>
-      </div>
+    
     </nav>
 
     <!-- Illustration -->
-    <div class="sidebar-illo">
-      <svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- ground waves -->
-        <path d="M10 105 Q40 98 70 105 Q100 112 130 105" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none"/>
-        <path d="M20 112 Q55 105 90 112 Q115 117 140 112" stroke="rgba(255,255,255,.2)" stroke-width="1.5" fill="none"/>
-        <!-- bench legs -->
-        <rect x="30" y="85" width="5" height="18" rx="2" fill="rgba(255,255,255,.5)"/>
-        <rect x="75" y="85" width="5" height="18" rx="2" fill="rgba(255,255,255,.5)"/>
-        <!-- bench seat -->
-        <rect x="22" y="80" width="66" height="8" rx="3" fill="rgba(255,255,255,.6)"/>
-        <!-- bench back -->
-        <rect x="22" y="65" width="66" height="6" rx="3" fill="rgba(255,255,255,.4)"/>
-        <!-- person body -->
-        <ellipse cx="65" cy="75" rx="12" ry="14" fill="rgba(255,255,255,.9)"/>
-        <!-- person legs -->
-        <path d="M58 88 Q55 97 50 100" stroke="rgba(255,255,255,.9)" stroke-width="5" stroke-linecap="round"/>
-        <path d="M58 88 Q60 97 58 103" stroke="rgba(255,255,255,.9)" stroke-width="5" stroke-linecap="round"/>
-        <path d="M50 100 Q45 101 43 100" stroke="rgba(255,255,255,.9)" stroke-width="4" stroke-linecap="round"/>
-        <path d="M58 103 Q53 104 51 103" stroke="rgba(255,255,255,.9)" stroke-width="4" stroke-linecap="round"/>
-        <!-- person head -->
-        <circle cx="65" cy="58" r="10" fill="rgba(255,255,255,.9)"/>
-        <!-- laptop -->
-        <rect x="72" y="74" width="22" height="14" rx="2" fill="#2d3a8c"/>
-        <rect x="68" y="87" width="28" height="3" rx="1.5" fill="#1e2875"/>
-        <!-- screen glow -->
-        <rect x="74" y="76" width="18" height="10" rx="1" fill="#5b7de8"/>
-        <!-- arm to laptop -->
-        <path d="M72 76 Q70 80 73 83" stroke="rgba(255,255,255,.9)" stroke-width="4" stroke-linecap="round"/>
-        <!-- floating elements -->
-        <circle cx="105" cy="50" r="6" fill="rgba(255,255,255,.2)"/>
-        <circle cx="118" cy="65" r="4" fill="rgba(255,255,255,.15)"/>
-        <circle cx="98" cy="70" r="3" fill="rgba(255,255,255,.1)"/>
-        <!-- cursor -->
-        <path d="M115 45 L110 58 L113 56 L115 62 L116 56 L120 57z" fill="rgba(255,255,255,.7)"/>
-      </svg>
-    </div>
+   <div class="sidebar-illo">
+  <img src="illu7 (3).svg" 
+       alt="Person sitting on bench" 
+       style="width:160px; display:block; margin:0 auto; border-radius:8px;">
+</div>
 
-    <button class="sidebar-cta">Upgrade Your Plan</button>
+    <button class="sidebar-cta"></button>
   </aside>
 
   <!-- ══════════ MAIN ══════════ -->
@@ -241,8 +199,8 @@
       <div class="user-avatar">
         <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="36" height="36" rx="8" fill="#f0f4ff"/>
-          <circle cx="18" cy="14" r="6" fill="#4361EE"/>
-          <ellipse cx="18" cy="28" rx="9" ry="6" fill="#4361EE"/>
+          <circle cx="18" cy="14" r="6" fill="#1D3E4E"/>
+          <ellipse cx="18" cy="28" rx="9" ry="6" fill="#1D3E4E"/>
           <!-- hat -->
           <rect x="11" y="10" width="14" height="3" rx="1.5" fill="#1e2d6b"/>
           <rect x="14" y="7" width="8" height="4" rx="2" fill="#1e2d6b"/>
@@ -259,7 +217,7 @@
 
       <!-- funnels section -->
       <div class="section-head">
-        <span class="section-title">Growing Super Human Rate Funnels</span>
+        <span class="section-title">Welcome back, Rahul Sharma Agent</span>
         <div class="carousel-ctrl">
           <button class="cc-btn">&#8249;</button>
           <div class="cc-dot"></div>
@@ -271,59 +229,37 @@
       <div class="metrics-row">
         <div class="metric-card">
           <div class="mc-icon blue">
-            <svg viewBox="0 0 22 22" fill="none"><path d="M3 5h16l-1.5 9H4.5L3 5z" stroke="#4361EE" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 5l-.5-2H1" stroke="#4361EE" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="18" r="1.5" fill="#4361EE"/><circle cx="16" cy="18" r="1.5" fill="#4361EE"/><path d="M7 9h8M9 12h4" stroke="#4361EE" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 22 22" fill="none"><path d="M3 5h16l-1.5 9H4.5L3 5z" stroke="#1D3E4E" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 5l-.5-2H1" stroke="#1D3E4E" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="18" r="1.5" fill="#1D3E4E"/><circle cx="16" cy="18" r="1.5" fill="#1D3E4E"/><path d="M7 9h8M9 12h4" stroke="#1D3E4E" stroke-width="1.2" stroke-linecap="round"/></svg>
           </div>
-          <div class="mc-label">Total Views</div>
+          <div class="mc-label">Total Applications</div>
           <div class="mc-row">
-            <span class="mc-value">23,50</span>
-            <span class="mc-badge up">47%</span>
+            <span class="mc-value">23</span>
           </div>
         </div>
         <div class="metric-card">
           <div class="mc-icon blue">
-            <svg viewBox="0 0 22 22" fill="none"><rect x="3" y="4" width="16" height="14" rx="2" stroke="#4361EE" stroke-width="1.5"/><path d="M3 9h16" stroke="#4361EE" stroke-width="1.5"/><path d="M7 4V2M15 4V2" stroke="#4361EE" stroke-width="1.5" stroke-linecap="round"/><text x="8" y="16" font-size="5" fill="#4361EE" font-weight="700" font-family="Plus Jakarta Sans">31</text></svg>
+            <svg viewBox="0 0 22 22" fill="none"><rect x="3" y="4" width="16" height="14" rx="2" stroke="#1D3E4E" stroke-width="1.5"/><path d="M3 9h16" stroke="#1D3E4E" stroke-width="1.5"/><path d="M7 4V2M15 4V2" stroke="#1D3E4E" stroke-width="1.5" stroke-linecap="round"/><text x="8" y="16" font-size="5" fill="#1D3E4E" font-weight="700" font-family="Plus Jakarta Sans">31</text></svg>
           </div>
-          <div class="mc-label">Total Orders</div>
+          <div class="mc-label">Completed</div>
           <div class="mc-row">
-            <span class="mc-value">31,512</span>
-            <span class="mc-badge up">27%</span>
+            <span class="mc-value">31</span>
           </div>
         </div>
         <div class="metric-card">
           <div class="mc-icon blue">
-            <svg viewBox="0 0 22 22" fill="none"><path d="M4 16l4-4 3 3 4-5 3 3" stroke="#4361EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="7" r="3" fill="#EFF3FF" stroke="#4361EE" stroke-width="1.5"/><path d="M16.5 6.5l1 1 1.5-1.5" stroke="#4361EE" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 22 22" fill="none"><path d="M4 16l4-4 3 3 4-5 3 3" stroke="#1D3E4E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="7" r="3" fill="#EFF3FF" stroke="#1D3E4E" stroke-width="1.5"/><path d="M16.5 6.5l1 1 1.5-1.5" stroke="#1D3E4E" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="mc-label">Avg Orders</div>
+          
+          <div class="mc-label">In Progress</div>
           <div class="mc-row">
-            <span class="mc-value">12,454</span>
-            <span class="mc-badge up">47%</span>
-          </div>
-        </div>
-        <div class="metric-card">
-          <div class="mc-icon blue">
-            <svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#4361EE" stroke-width="1.5"/><path d="M7.5 14.5l7-7" stroke="#4361EE" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="8.5" r="1.5" fill="#4361EE"/><circle cx="13.5" cy="13.5" r="1.5" fill="#4361EE"/></svg>
-          </div>
-          <div class="mc-label">Conversion Rate</div>
-          <div class="mc-row">
-            <span class="mc-value">64.3%</span>
-            <span class="mc-badge up">57%</span>
-          </div>
-        </div>
-        <div class="metric-card">
-          <div class="mc-icon blue">
-            <svg viewBox="0 0 22 22" fill="none"><rect x="3" y="8" width="4" height="9" rx="1" fill="#dce8ff" stroke="#4361EE" stroke-width="1.3"/><rect x="9" y="5" width="4" height="12" rx="1" fill="#dce8ff" stroke="#4361EE" stroke-width="1.3"/><rect x="15" y="2" width="4" height="15" rx="1" fill="#dce8ff" stroke="#4361EE" stroke-width="1.3"/></svg>
-          </div>
-          <div class="mc-label">Total Sales</div>
-          <div class="mc-row">
-            <span class="mc-value">23,34</span>
-            <span class="mc-badge up">38%</span>
+            <span class="mc-value">23</span>
           </div>
         </div>
       </div>
 
       <!-- luxury product section -->
       <div class="product-section-head">
-        <span class="section-title">Luxury Product</span>
+        <span class="section-title">Your gift milestones</span>
         <div class="view-all">VIEW ALL <span>&#9658;</span></div>
       </div>
 
@@ -394,16 +330,16 @@
     <div class="rp-topbar">
       <span class="rp-title">Activity</span>
       <button class="insight-btn">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="#4361EE" stroke-width="1.3"/><path d="M6.5 6v3.5" stroke="#4361EE" stroke-width="1.3" stroke-linecap="round"/><circle cx="6.5" cy="4" r=".7" fill="#4361EE"/></svg>
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="#1D3E4E" stroke-width="1.3"/><path d="M6.5 6v3.5" stroke="#1D3E4E" stroke-width="1.3" stroke-linecap="round"/><circle cx="6.5" cy="4" r=".7" fill="#1D3E4E"/></svg>
         INSIGHT
-        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 3.5l2.5 2.5L7 3.5" stroke="#4361EE" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M2 3.5l2.5 2.5L7 3.5" stroke="#1D3E4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </div>
 
     <!-- live visitors card -->
     <div class="live-card">
       <div class="live-expand">&#8599;</div>
-      <div class="live-label">Active Visitors right now</div>
+      <div class="live-label">Application Velocity</div>
       <div class="live-count">3467</div>
       <div class="live-sub">Page view per minute</div>
       <div class="sparkline-wrap">
