@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.agent')
 
 @section('title', 'Application #' . $application->id . ' | EasyTax')
 
@@ -8,7 +8,7 @@
             <a href="{{ route('agent.applications.index') }}"
                 class="text-muted text-sm font-weight-bold mb-2 d-inline-block transition-hover">
                 <i class="fas fa-arrow-left mr-1"></i> Back to Applications
-            </a>  
+            </a>
 
             @php
                 $status = strtolower($application->status->value ?? 'unknown');
@@ -197,7 +197,7 @@
                     // Remove sensitive internal fields
                     $formData = array_filter($rawFormData, fn($key) => !in_array($key, ['admin_username', 'admin_password']), ARRAY_FILTER_USE_KEY); 
                     
-                  // 🧠 SMART REPEATER ENGINE: Handles BOTH Arrays and Claude's Flat Numbered Format
+                    // 🧠 SMART REPEATER ENGINE: Handles BOTH Arrays and Claude's Flat Numbered Format
                     $regularData = [];
                     $repeaterGroups = [];
                     
@@ -362,10 +362,10 @@
 
         </div>
 
+
         {{-- RIGHT COLUMN --}}
         <div class="col-lg-4">
-
- {{-- DOCUMENTS --}}
+            {{-- DOCUMENTS --}}
             <div class="card border-0 shadow-sm rounded-lg">
                 <div class="card-header bg-white py-3 border-bottom text-center">
                     <h3 class="card-title font-weight-bold text-dark w-100 float-none mb-0">
@@ -440,6 +440,7 @@
                     @endif
                 </div>
             </div>
+            
             {{-- NOTICE --}}
             <div class="card border-0 bg-primary-soft mt-4 rounded-lg">
                 <div class="card-body">
@@ -647,68 +648,68 @@
 
        
     </script>
-  {{-- --- RAZORPAY POPUP LOGIC --- --}}
-        @if(session('razorpay_order'))
-            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-            <script>
-                var options = {
-                    "key": "{{ session('razorpay_order.key_id') }}",
-                    "amount": "{{ session('razorpay_order.amount') }}",
-                    "currency": "{{ session('razorpay_order.currency') }}",
-                    "name": "EasyTax",
-                    "description": "Application Payment Retry",
-                    "order_id": "{{ session('razorpay_order.order_id') }}",
-                    "handler": function (response) {
-                        // 1. Create a hidden form when payment succeeds
-                        var form = document.createElement('form');
-                        form.method = 'POST';
-                        form.action = '{{ route('payment.success') }}';
+    
+    {{-- --- RAZORPAY POPUP LOGIC --- --}}
+    @if(session('razorpay_order'))
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var options = {
+                "key": "{{ session('razorpay_order.key_id') }}",
+                "amount": "{{ session('razorpay_order.amount') }}",
+                "currency": "{{ session('razorpay_order.currency') }}",
+                "name": "EasyTax",
+                "description": "Application Payment Retry",
+                "order_id": "{{ session('razorpay_order.order_id') }}",
+                "handler": function (response) {
+                    // 1. Create a hidden form when payment succeeds
+                    var form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '{{ route('payment.success') }}';
 
-                        // 2. Add CSRF Token
-                        var csrfToken = document.createElement('input');
-                        csrfToken.type = 'hidden';
-                        csrfToken.name = '_token';
-                        csrfToken.value = '{{ csrf_token() }}';
-                        form.appendChild(csrfToken);
+                    // 2. Add CSRF Token
+                    var csrfToken = document.createElement('input');
+                    csrfToken.type = 'hidden';
+                    csrfToken.name = '_token';
+                    csrfToken.value = '{{ csrf_token() }}';
+                    form.appendChild(csrfToken);
 
-                        // 3. Add Razorpay Verification Data
-                        var inputs = ['razorpay_payment_id', 'razorpay_order_id', 'razorpay_signature'];
-                        inputs.forEach(function(name) {
-                            var input = document.createElement('input');
-                            input.type = 'hidden';
-                            input.name = name;
-                            input.value = response[name];
-                            form.appendChild(input);
-                        });
+                    // 3. Add Razorpay Verification Data
+                    var inputs = ['razorpay_payment_id', 'razorpay_order_id', 'razorpay_signature'];
+                    inputs.forEach(function(name) {
+                        var input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = name;
+                        input.value = response[name];
+                        form.appendChild(input);
+                    });
 
-                        // 4. Add Application ID
-                        var appId = document.createElement('input');
-                        appId.type = 'hidden';
-                        appId.name = 'application_id';
-                        appId.value = '{{ session('razorpay_order.application_id') }}';
-                        form.appendChild(appId);
+                    // 4. Add Application ID
+                    var appId = document.createElement('input');
+                    appId.type = 'hidden';
+                    appId.name = 'application_id';
+                    appId.value = '{{ session('razorpay_order.application_id') }}';
+                    form.appendChild(appId);
 
-                        // 5. Submit the form to your backend
-                        document.body.appendChild(form);
-                        form.submit();
-                    },
-                    "prefill": {
-                        "name": "{{ auth()->user()->name ?? 'Agent' }}",
-                        "email": "{{ auth()->user()->email ?? '' }}",
-                        "contact": "{{ auth()->user()->phone ?? '' }}"
-                    },
-                    "theme": {
-                        "color": "#1E9C5D"
-                    }
-                };
-                
-                // Launch the Razorpay Window
-                var rzp1 = new Razorpay(options);
-                rzp1.on('payment.failed', function (response){
-                    alert("Payment Failed: " + response.error.description);
-                });
-                rzp1.open();
-            </script>
-        @endif
-   
-@stopP
+                    // 5. Submit the form to your backend
+                    document.body.appendChild(form);
+                    form.submit();
+                },
+                "prefill": {
+                    "name": "{{ auth()->user()->name ?? 'Agent' }}",
+                    "email": "{{ auth()->user()->email ?? '' }}",
+                    "contact": "{{ auth()->user()->phone ?? '' }}"
+                },
+                "theme": {
+                    "color": "#1E9C5D"
+                }
+            };
+            
+            // Launch the Razorpay Window
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response){
+                alert("Payment Failed: " + response.error.description);
+            });
+            rzp1.open();
+        </script>
+    @endif
+@stop
